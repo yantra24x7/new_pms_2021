@@ -1,0 +1,51 @@
+<div class="modal_sec two_form">
+    <mat-toolbar>
+        <h3>Shift Registaration</h3>
+        <button type="button" class="close" aria-label="Close" (click)="onNoClick()">
+            <span aria-hidden="true">×</span>
+        </button>
+    </mat-toolbar>
+    <div class="dialog-form">
+        <div class="filter_sec">
+            <form [formGroup]="login" (ngSubmit)="logintest()" class="form_sec">
+                <!-- <mat-form-field>
+                    <mat-label>Day Start Time</mat-label>
+                    <input matInput formControlName="day_start_time" type="text" required>
+                    <mat-error *ngIf="login.controls['day_start_time'].errors?.required" >Day Start Time is
+                        Required
+                    </mat-error>
+                </mat-form-field> -->
+
+                <div class="form_field time_field_bg">
+                    <!-- <mat-form-field appearance="outline"> -->
+                    <mat-label>Day Start Time</mat-label>
+                    <!-- <input matInput formControlName="start_time" type="text"> -->
+                    <!-- <ngx-timepicker-field formControlName="start_time" [controlOnly]="true"></ngx-timepicker-field> -->
+                    <ngb-timepicker formControlName="day_start_time" [meridian]="meridian" [seconds]="seconds"></ngb-timepicker>
+                    <!-- </mat-form-field> -->
+                </div><br>
+
+                <!-- <mat-form-field>
+                    <mat-label>Working Time </mat-label>
+                    <input matInput formControlName="working_time" type="text" required>
+                    <mat-error *ngIf="login.controls['working_time'].errors?.required" >Working Time is
+                        Required
+                    </mat-error>
+                </mat-form-field> -->
+
+                <mat-form-field>
+                    <mat-label>Number of Shift</mat-label>
+                    <input matInput formControlName="no_of_shift" type="text" required>
+                    <mat-error *ngIf="login.controls['no_of_shift'].errors?.required" >Number Of shift is
+                        Required
+                    </mat-error>
+                </mat-form-field>
+
+                <div class="form-button text-right">
+                    <button mat-raised-button [disabled]="login.invalid" (click)="logintest()" class="filter_btn btn_orange"> Save</button>
+                    <!-- <button mat-raised-button (click)="onNoClick()" class="filter_btn btn_default ml-16">Close</button> -->
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+<div class="section_padding" >
+  <mat-toolbar class="forum">
+    <button type="button" class="close" aria-label="Close" (click)="onNoClick()">
+        <span aria-hidden="true">×</span>
+    </button>
+</mat-toolbar>
+  <mat-card class="card_sec">
+    <mat-card-content class="table_responsive sep">
+    <table class="mat-elevation-z0">
+      <tr>
+        <th>S.no</th>
+        <th>Machine Name</th>
+        <th>Shift Num</th>
+        <th>Operator Name</th>
+        <th>Operation Id</th>
+        <th>Start Time</th>
+        <th>End Time</th>
+
+
+      </tr>
+
+      <tr *ngFor="let va of val; let i = index">
+        <td>{{i+1}}</td>
+        <td>{{out.machine}}</td>
+
+        <td>{{out.shifttransaction}}</td>
+
+        <td>{{va.operator}}</td>
+
+        <td>{{va.operation_management}}</td>
+        <td>{{va.start_time | date:'MM-dd-yyyy ; HH:mm:ss'}}</td>
+        <td>{{va.end_time | date:'MM-dd-yyyy ; HH:mm:ss'}}</td>
+
+
+      </tr>
+    </table>
+    </mat-card-content>
+   
+  </mat-card>
+</div>
