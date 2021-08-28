@@ -16,6 +16,10 @@ export interface Edit { }
 })
 export class SidebarComponent implements OnInit,OnChanges {
   @Input()navStatus: boolean;
+
+  opened: boolean;
+  public sidebarToggled = false;
+  
   show1: boolean;
   show2: boolean;
   last_name: any;
@@ -111,8 +115,49 @@ open(): void {
 toggle() {
   this.show1 = !this.show1
 }
+toggleSidebar() {
+  let assidebar = document.querySelector('.sidenav');
+  let body = document.querySelector('body');
+  
+  console.log(assidebar);
+ 
+    this.sidebarToggled = !this.sidebarToggled;
+    console.log(this.sidebarToggled );
+    // debugger
+    if(window.innerWidth  < 600){
+      if(assidebar.classList.contains('sss' || '' ))    
+      {
+        assidebar.classList.add('sidebar-hidden');
+          body.classList.remove('activemenu');
+          assidebar.classList.remove('sss');
+      }
+      else
+      { 
+        assidebar.classList.remove('sidebar-hidden');
+        body.classList.add('activemenu');
+        assidebar.classList.add('sss');
+      
+      }
+    }
+else{
+if(this.sidebarToggled) {
+  assidebar.classList.add('sidebar-hidden');
+  body.classList.remove('activemenu');
+  assidebar.classList.remove('sss');
+} 
+else {
+  assidebar.classList.remove('sidebar-hidden');
+  body.classList.add('activemenu');
+  assidebar.classList.add('sss');
+}
+}  
+}
 
-
+shifting(){
+  if(window.innerWidth  < 600){
+    this.toggleSidebar();
+  }
+}
 toggle_menu(){
   this.Compare = !this.Compare;
 

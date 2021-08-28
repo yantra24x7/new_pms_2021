@@ -885,6 +885,47 @@ button.filter_btn.btn_default.ml-16.mat-raised-button.mat-button-base {
                     overflow-x: auto;
                 }
 
+        //         .activemenu {
+        //             .mat-drawer-content{
+        //             margin-left: 142px !important;
+        //         -webkit-transition: all 0.3s linear;
+        //     transition: all 0.3s linear;
+        //     }
+        // }
+        .activemenu footer.main-footer {
+            width: calc(100% - 160px) !important;
+            -webkit-transition: all 0.3s linear !important;
+            transition: all 0.3s linear !important;
+          }
+          .activemenu .page {
+  
+            margin-left: 160px;
+            -webkit-transition: all 0.3s linear;
+            transition: all 0.3s linear;
+          }
+          .page{
+            margin-left: 0px;
+            -webkit-transition: all 0.3s linear;
+            transition: all 0.3s linear;
+          }
+          @media only screen and (min-width:1200px) and (max-width:1366px){
+            
+          .activemenu .as-axis div {
+            margin: 0 -10px !important;
+          }
+          .activemenu .sec_padding_top .dashbaord_sec .content-inner .wrapper_inner .main_row .main_col {
+            width: calc(100%/3 - 7px) !important;
+            
+          }
+         
+          }
+            
+            // .mat-drawer-content{
+            //     margin-left: 100px!important;
+            //      -webkit-transition: all 0.3s linear;
+            //     transition: all 0.3s linear;
+            // }
+
                 //   Responsive styles
                 @media (max-width: 600px){
                     .filter_field{

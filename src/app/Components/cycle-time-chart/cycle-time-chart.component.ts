@@ -21,6 +21,7 @@ require('highcharts/modules/annotations')(Highcharts);
 export class CycleTimeChartComponent implements OnInit {
   startDate :any;
   parts = [];
+  sho_tim:any;
    sec: any;
    shiftpatch:any;
   c_time  = [];
@@ -194,7 +195,7 @@ this.diffparts = uniqs;
         },
         subtitle: {
           // text: 'Machine ID : '+ this.macname['machine_name']+',Shift:'+ res.shift_no+' Date : 04-02-20 ',
-          text: 'Machine Name : ' + this.machineName + ', Date : ' +this.date + ',Shift :'  + this.shiftpatch + ',Time : ' + '' ,
+          text: 'Machine Name : ' + this.machineName + ', Date : ' +this.date + ',Shift :'  + this.shiftpatch + ',Time : ' + this.sho_tim ,
           // + ', PartsCount:' + '' + ',Program No : ' + ''
           style: {
             fontSize: '16px',
@@ -273,7 +274,7 @@ this.diffparts = uniqs;
         text: 'Hour Wise Parts Count Chart(Nos)'
       },
       subtitle: {
-        text: 'Machine Name : ' + this.machineName + ', Date : ' +this.date + ',Shift :'  + this.shiftpatch + ',Time : ' + '',
+        text: 'Machine Name : ' + this.machineName + ', Date : ' +this.date + ',Shift :'  + this.shiftpatch + ',Time : ' + this.sho_tim,
 
         style: {
           fontSize: '16px',
@@ -391,7 +392,7 @@ this.diffparts = uniqs;
         text: ' Machine Status Chart'
       },
       subtitle: {
-        text: 'Machine Name : ' + this.machineName + ', Date : ' +this.date + ',Shift :'  + this.shiftpatch + ',Time : ' + '' ,
+        text: 'Machine Name : ' + this.machineName + ', Date : ' +this.date + ',Shift :'  + this.shiftpatch + ',Time : ' + this.sho_tim ,
 
         style: {
           fontSize: '16px',
@@ -541,7 +542,7 @@ this.diffparts = uniqs;
         text: 'Machine Status With Utilization(%) Chart'
       },
       subtitle: {
-        text: 'Machine Name : ' + this.machineName + ', Date : ' +this.date + ',Shift :'  + this.shiftpatch + ',Time : ' + '' ,
+        text: 'Machine Name : ' + this.machineName + ', Date : ' +this.date + ',Shift :'  + this.shiftpatch + ',Time : ' + this.sho_tim ,
         // + ', PartsCount:' + '' + ',Program No : ' + ''
         style: {
           color: "#f58632",
@@ -624,7 +625,8 @@ this.diffparts = uniqs;
     this.service.all_time_chart(register).pipe(untilDestroyed(this)).subscribe(res => {
       this.myLoader=false;
       this.allcycletime = res;
-      console.log(res.cycle_time);
+      console.log(res[0].time);
+      this.sho_tim = res[0].time;
       this.tablelist = true;
       this.chart1()
     })

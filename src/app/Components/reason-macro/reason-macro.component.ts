@@ -300,7 +300,9 @@ export class Dialog {
      })
     
   }
-
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
   logintest_func(){
     console.log(this.login.value);
     this.service.VAPMS(this.login.value).subscribe(res =>{

@@ -51,6 +51,7 @@ const routes: Routes = [
   { path: 'password', loadChildren: () => import('./Components/password/password.module').then(m => m.PasswordModule) },
   { path: 'theme', loadChildren: () => import('./Components/theme/theme.module').then(m => m.ThemeModule) },
   { path: 'avail', loadChildren: () => import('./Components/avail/avail.module').then(m => m.AvailModule) },
+  { path: 'hour', loadChildren: () => import('./Components/hour/hour.module').then(m => m.HourModule) },
 
 ];
  

@@ -140,7 +140,7 @@ export class Edit {
   sampletest:any;
   value:any;
   minDate = new Date();
-
+  startDate : any;
   new_date3:any;
   shift_response:any;
   testg:any;

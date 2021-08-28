@@ -8,13 +8,12 @@ import { DatePipe } from '@angular/common';
 import { untilDestroyed } from 'ngx-take-until-destroy';
 import { ExportService } from '../shared/export.service';
 import Swal from 'sweetalert2'; 
-
 @Component({
-  selector: 'app-avail',
-  templateUrl: './avail.component.html',
-  styleUrls: ['./avail.component.scss']
+  selector: 'app-hour',
+  templateUrl: './hour.component.html',
+  styleUrls: ['./hour.component.scss']
 })
-export class AvailComponent implements OnInit {
+export class HourComponent implements OnInit {
 
   displayedColumns: string[] = ['posi','position', 'name', 'weight', 'symbol','alarmtype','alarmnumber','alarmmessage','alarmtime','produced','rejecet','rework','avail','perfor','quali','oee'];
   dataSource = new MatTableDataSource();
@@ -101,33 +100,17 @@ getsplit(val){
 loginfunc(){
   this.r_type1 = "Shiftwise";
   console.log(this.login.value)
-  if(this.login.value.shift_id == 'undefined'){
-    this.new_date = new DatePipe('en-US').transform(this.login.value.start_date, 'dd-MM-yyyy');
-    this.new_date1 = new DatePipe('en-US').transform(this.login.value.end_date, 'dd-MM-yyyy');
-    console.log(this.r_type1);
-    console.log(this.new_date,this.new_date1)
-    this.service.table_shift1(this.login.value, this.new_date,this.new_date1,this.tenant,this.r_type1).subscribe(res =>{
-      console.log(res);
-       this.alarmreport = res;
-      // this.myLoader = false;
-       this.dataSource=new MatTableDataSource(this.alarmreport)
-  
-    })
-  }
-  else{
-    this.new_date = new DatePipe('en-US').transform(this.login.value.start_date, 'dd-MM-yyyy');
-    this.new_date1 = new DatePipe('en-US').transform(this.login.value.end_date, 'dd-MM-yyyy');
-    console.log(this.r_type1);
-    console.log(this.new_date,this.new_date1)
-    this.service.table_shift(this.login.value, this.new_date,this.new_date1,this.tenant,this.r_type1).subscribe(res =>{
-      console.log(res);
-       this.alarmreport = res;
-      // this.myLoader = false;
-       this.dataSource=new MatTableDataSource(this.alarmreport)
-  
-    })
-  }
- 
+  this.new_date = new DatePipe('en-US').transform(this.login.value.start_date, 'dd-MM-yyyy');
+  this.new_date1 = new DatePipe('en-US').transform(this.login.value.end_date, 'dd-MM-yyyy');
+  console.log(this.r_type1);
+  console.log(this.new_date,this.new_date1)
+  this.service.table_shift(this.login.value, this.new_date,this.new_date1,this.tenant,this.r_type1).subscribe(res =>{
+    console.log(res);
+     this.alarmreport = res;
+    // this.myLoader = false;
+     this.dataSource=new MatTableDataSource(this.alarmreport)
+
+  })
 
 }
 

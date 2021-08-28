@@ -1,11 +1,14 @@
 <mat-toolbar class="header" *ngIf="nav.visible">
   <!-- <div class="container-fluid"> -->
   <mat-toolbar-row class="header_area">
-    <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+    <!-- <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
       *ngIf="isHandset$ | async">
       <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-    </button>
+    </button> -->
     <div class="company_name">
+      <div class="as-toggle-btn"  (click)="toggleSidebar()" id="sidebarCollapse">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </div>
       <h3>{{first_name}} {{last_name}}</h3>
     </div>
     <h3  class="seperate">Welcome {{role}}</h3>
@@ -58,8 +61,8 @@
  
 </mat-toolbar>
 
-<mat-sidenav-container class="">
-  <mat-sidenav class="sidenav " #sidenav mode="side" opened *ngIf="nav.visible">
+<div>
+  <div class="sidenav sss" id="sidebar"  *ngIf="nav.visible">
     <div class="main-menu">
       <ul id="side-main-menu" class="side-menu">
         <!-- <li routerLinkActive="active-link">
@@ -69,7 +72,7 @@
           </a>
         </li> -->
 
-        <li routerLinkActive="active-link">
+        <li routerLinkActive="active-link" (click)="shifting()">
           <a [routerLink]="['/machine_details']">
             <i class="fa fa-th-large" aria-hidden="true"></i>
             <span>Machines</span>
@@ -83,7 +86,7 @@
           </a>
         </li> -->
 
-        <li routerLinkActive="active-link">
+        <li routerLinkActive="active-link" (click)="shifting()">
           <a [routerLink]="['/alarm']">
             <i class="fa fa-bell-o" aria-hidden="true"></i>
             <span>Alarms</span>
@@ -96,10 +99,17 @@
           </a>
         </li> -->
 
-        <li routerLinkActive="active-link">
+        <li routerLinkActive="active-link" (click)="shifting()">
           <a [routerLink]="['/alarmreport']">
             <i class="fa fa-folder-open-o" aria-hidden="true"></i>
             <span>Alarm History Report</span>
+          </a>
+        </li>
+
+        <li routerLinkActive="active-link" (click)="shifting()">
+          <a [routerLink]="['/report']">
+            <i class="fa fa-file-text-o" aria-hidden="true"></i>
+            <span>Report</span>
           </a>
         </li>
         <!-- <li routerLinkActive="active-link">
@@ -108,33 +118,30 @@
             <span>Log</span>
           </a>
         </li> -->
-        <li routerLinkActive="active-link">
+        <li routerLinkActive="active-link" (click)="shifting()">
           <a [routerLink]="['/hmi']">
             <i class="fa fa-hand-pointer-o" aria-hidden="true"></i>
-            <span>HMI</span>
+            <span>Idle Reason Report</span>
           </a>
         </li>
 
-        <li routerLinkActive="active-link">
-          <a [routerLink]="['/reason_macro']">
-            <i class="fa fa-bar-chart" aria-hidden="true"></i>
-            <span>Reason List</span>
+        <li routerLinkActive="active-link" (click)="shifting()">
+          <a [routerLink]="['/avail']">
+            <i class="fa fa-connectdevelop" aria-hidden="true"></i>
+            <span>OEE Report</span>
           </a>
         </li>
-        <li routerLinkActive="active-link">
-          <a [routerLink]="['/report']">
-            <i class="fa fa-file-text-o" aria-hidden="true"></i>
-            <span>Report</span>
-          </a>
-        </li>
-        <li routerLinkActive="active-link">
+
+       
+       
+        <li routerLinkActive="active-link" (click)="shifting()">
           <a [routerLink]="['/cyclechart']">
             <i class="fa fa-bar-chart" aria-hidden="true"></i>
             <span>Cycle Time Chart</span>
           </a>
         </li>
 
-        <li routerLinkActive="active-link">
+        <li routerLinkActive="active-link" (click)="shifting()">
           <a [routerLink]="['/allshiftchart']">
             <i class="fa fa-area-chart" aria-hidden="true"></i>
             <span>All shift chart</span>
@@ -217,70 +224,74 @@
           </a>
         </li>
         <div *ngIf="show1">
-          <li routerLinkActive="active-link">
+          <li routerLinkActive="active-link" (click)="shifting()">
             <a [routerLink]="['/machine_registration']">
               <i class="fa fa-desktop" aria-hidden="true"></i>
               <span>Machine</span>
             </a>
           </li>
-          <li routerLinkActive="active-link">
+          <li routerLinkActive="active-link" (click)="shifting()">
             <a [routerLink]="['/shift']">
               <i class="fa fa-clock-o" aria-hidden="true"></i>
               <span>Shift</span>
             </a>
           </li>
 
-          <li routerLinkActive="active-link">
-            <a [routerLink]="['/part']">
-              <i class="fa fa-clipboard" aria-hidden="true"></i>
-              <span>Part Configuration</span>
-            </a>
-          </li>
 
 
-          <li routerLinkActive="active-link">
-            <a [routerLink]="['/process']">
-              <i class="fa fa-clipboard" aria-hidden="true"></i>
-              <span>Process Plan</span>
-            </a>
-          </li>
 
 
-          <li routerLinkActive="active-link">
-            <a [routerLink]="['/avail']">
-              <i class="fa fa-connectdevelop" aria-hidden="true"></i>
-              <span>OEE</span>
-            </a>
-          </li>
+        
 
-          <li routerLinkActive="active-link">
+          <!-- <li routerLinkActive="active-link" (click)="shifting()">
             <a [routerLink]="['/hour']">
               <i class="fa fa-connectdevelop" aria-hidden="true"></i>
               <span>Hour</span>
             </a>
-          </li>
-          <li routerLinkActive="active-link">
+          </li> -->
+          <li routerLinkActive="active-link" (click)="shifting()">
             <a [routerLink]="['/user_management']">
               <i class="fa fa-user-o" aria-hidden="true"></i>
               <span>User</span>
             </a>
           </li>
-          <li routerLinkActive="active-link">
+          <li routerLinkActive="active-link" (click)="shifting()">
             <a [routerLink]="['/operator_registration']">
               <i class="fa fa-user-circle-o" aria-hidden="true"></i>
               <span>Operator</span>
             </a>
           </li>
 
+          
+          <li routerLinkActive="active-link" (click)="shifting()">
+            <a [routerLink]="['/part']">
+              <i class="fa fa-clipboard" aria-hidden="true"></i>
+              <span>Part Configuration</span>
+            </a>
+          </li>
 
-          <li routerLinkActive="active-link">
+          
+          <li routerLinkActive="active-link" (click)="shifting()">
+            <a [routerLink]="['/process']">
+              <i class="fa fa-clipboard" aria-hidden="true"></i>
+              <span>Process Plan</span>
+            </a>
+          </li>
+
+          <li routerLinkActive="active-link" (click)="shifting()">
+            <a [routerLink]="['/reason_macro']">
+              <i class="fa fa-bar-chart" aria-hidden="true"></i>
+              <span>Reason List</span>
+            </a>
+          </li>
+          <li routerLinkActive="active-link" (click)="shifting()">
             <a [routerLink]="['/operation_man']">
               <i class="fa fa-user-circle-o" aria-hidden="true"></i>
               <span>Operation Management</span>
             </a>
           </li>
 
-          <li routerLinkActive="active-link">
+          <li routerLinkActive="active-link" (click)="shifting()">
             <a [routerLink]="['/operation_assign']">
               <i class="fa fa-user-circle-o" aria-hidden="true"></i>
               <span>Operator Assign</span>
@@ -350,12 +361,12 @@
       <!-- <div class="cover-bar"></div> -->
     </div>
 
-  </mat-sidenav>
-  <mat-sidenav-content>
+  </div>
+  <div>
     <router-outlet></router-outlet>
-  </mat-sidenav-content>
+  </div>
   
-</mat-sidenav-container>
+</div>
 
 
 <footer class="main-footer ng-scope" *ngIf="nav.visible">

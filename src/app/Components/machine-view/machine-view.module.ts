@@ -20,6 +20,8 @@ const routes: Routes = [{ path: '', component: MachineViewComponent }];
       "innerStrokeWidth": 12,
       "showSubtitle": true,
       // "subtitle": 'Utlization'
+      outerStrokeLinecap: "square",
+      
     })
   ]
 })

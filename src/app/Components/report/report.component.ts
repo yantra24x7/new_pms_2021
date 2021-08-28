@@ -20,6 +20,8 @@ export class ReportComponent implements OnInit {
   new_date:any;
   docku:any;
   pulse:any;
+  minDate:any;
+  maxDate:any;
   new_date1:any;
   startDate:any;
   endDate:any;

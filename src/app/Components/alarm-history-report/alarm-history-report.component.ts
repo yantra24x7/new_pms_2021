@@ -16,7 +16,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./alarm-history-report.component.scss']
 })
 export class AlarmHistoryReportComponent implements OnInit {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol','alarmtype','alarmnumber','alarmmessage','alarmtime'];
+  displayedColumns: string[] = ['snono','position', 'name', 'weight', 'symbol','alarmtype','alarmnumber','alarmmessage','alarmtime'];
   dataSource = new MatTableDataSource();
   startDate:any;
   new_date:any;
@@ -125,7 +125,6 @@ loginfunc(){
 
   this.myLoader = true;
   if(this.login.value.report_type === 'Shiftwise'){
-    alert("shift")
     this.service.shift1(this.login.value, this.new_date,this.new_date1,this.tenant).subscribe(res =>{
       console.log(res.alarm);
       this.alarmreport = res;
@@ -135,7 +134,6 @@ loginfunc(){
     })
   }
   else if(this.login.value.report_type === 'Operatorwise'){
-    alert("operator")
     this.service.operator1(this.login.value, this.new_date,this.new_date1,this.tenant).subscribe(res =>{
       console.log(res);
       this.alarmreport = res;

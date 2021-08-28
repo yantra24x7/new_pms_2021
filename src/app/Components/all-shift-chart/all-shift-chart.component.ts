@@ -527,11 +527,92 @@ exporting:{
    console.log(this.allcycle_response);
    for(let i in this.allcycle_response){
     console.log(i)
-    this.correct = this.allcycle_response[i];
+    this.correct = this.allcycle_response;
     console.log(this.correct)
-    for(let j in this.allcycle_response[i][0]){
-      console.log(j)
-    }
+
+    var name="partcycle" + i;
+          
+           
+          Highcharts.chart(name, {
+           chart: {
+             renderTo: 'container'+ i,
+             zoomType: 'xy',
+             height: 120,
+             // backgroundColor: ''
+           },
+           exporting: {
+             enabled: false
+           },
+           credits: {
+             enabled: false
+           },
+           title: {
+             text: ''
+           },
+           subtitle: {
+             text: ''
+           },
+           xAxis: [{
+             crosshair: false,
+             labels: {
+               enabled: true
+             }
+           }],
+           yAxis: [{ // Primary yAxis
+             gridLineColor: '#45B734',
+             labels: {
+               enabled: false,
+               // style: {
+               //   color: Highcharts.getOptions().colors[1]
+               // }
+             },
+             title: {
+               text: '',
+               // style: {
+               //   color: Highcharts.getOptions().colors[1]
+               // }
+             }
+           },
+           { // Secondary yAxis
+             title: {
+               text: '',
+               // style: {
+               //   color: Highcharts.getOptions().colors[0]
+               // }
+             },
+     
+             opposite: false
+           }],
+           tooltip: {
+             shared: true
+           },
+         
+           series: [{
+             showInLegend: false,
+             // borderColor: '#056B2D',
+             name: 'Count',
+             type: 'column',
+             yAxis: 1,
+             data: [23,78,89],
+            //  color: this.reflect === 'OPERATE'? "#1EAD55" : this.reflect === 'DISCONNECT'? "#6D6D6D" : "#F81301",
+             // color: "this.reflect === 'OPERATE'? #1EAD55 : this.reflect === 'DISCONNECT'? #6D6D6D : #F81301",
+             tooltip: {
+               valueSuffix: ' ',
+             }
+           }, 
+           {
+             showInLegend: false,
+             name: 'Parts',
+             type: 'spline',
+             data: [1,5,8],
+            //  color: this.reflect === 'OPERATE'? "#1EAD55" : this.reflect === 'DISCONNECT'? "#6D6D6D" : "#F81301",
+             tooltip: {
+               valueSuffix: ''
+             }
+           }
+         ]
+         });
+   
   
    }
     this.myLoader1= false;

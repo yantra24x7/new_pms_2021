@@ -30,4 +30,9 @@ export class OEEService {
     return this.http.get('machines/reports_page?tenant_id='+tenant + '&&start_date=' + new_date + '&&end_date=' + new_date1 +'&&machine_id=' + register.machine_id + '&&shift_id=' + register.shift_id + '&&report_type=' + report_type )
   }
 
+  table_shift1(register,new_date,new_date1,tenant,report_type):Observable<any>  {
+
+    console.log(tenant)
+    return this.http.get('machines/reports_page?tenant_id='+tenant + '&&start_date=' + new_date + '&&end_date=' + new_date1 +'&&machine_id=' + register.machine_id + '&&report_type=' + report_type )
+  }
 }
