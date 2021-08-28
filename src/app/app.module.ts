@@ -13,6 +13,8 @@ import { NavbarService} from './Nav/navbar.service';
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CoreModule} from '../app/Service/core/core.module';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { CoreModule} from '../app/Service/core/core.module';
     BrowserAnimationsModule,
     RegisterModule,SharedModule,
     MatToolbarModule,
-    CoreModule
+    CoreModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
     
   ],
   providers: [NavbarService],
