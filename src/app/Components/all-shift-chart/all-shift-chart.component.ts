@@ -25,11 +25,19 @@ correct:any;
  Highcharts1 = Highcharts;
  chartOptions1: any;
  chartOptions2:any;
+ chartOptions5: any;
+ chartOptions6: any;
+ chartOptions7: any;
+ chartOptions8:any;
+ Highcharts6 = Highcharts;
  shiftNo:any;
  parts = [];
  c_time = [];
  pro_number = [];
  all_cycle_resp:any;
+ Highcharts3 = Highcharts;
+ Highcharts4 = Highcharts;
+ Highcharts5 = Highcharts;
 
  // second chart
  Highcharts2 = Highcharts;
@@ -54,6 +62,15 @@ correct:any;
     machineID:any;
     showshift: any;
     date: any;
+  c_time1: any;
+  pro_number1: any;
+  parts1: any;
+  parts2: any;
+  c_time2: any;
+  pro_number2: any;
+  parts3: any;
+  c_time3: any;
+  pro_number3: any;
     constructor(private datePipe:DatePipe,private nav:NavbarService,private service:AllShiftChartService,private fb:FormBuilder) {
     this.nav.show();
     this.tenant=localStorage.getItem('tenant_id')
@@ -520,102 +537,397 @@ exporting:{
  })
 
 
- this.myLoader1= true;
 
  this.service.all_cycle_time_chart_new(register).pipe(untilDestroyed(this)).subscribe(res => {
    this.allcycle_response = res;
-   console.log(this.allcycle_response);
-   for(let i in this.allcycle_response){
-    console.log(i)
-    this.correct = this.allcycle_response;
-    console.log(this.correct)
-
-    var name="partcycle" + i;
-          
-           
-          Highcharts.chart(name, {
-           chart: {
-             renderTo: 'container'+ i,
-             zoomType: 'xy',
-             height: 120,
-             // backgroundColor: ''
-           },
-           exporting: {
-             enabled: false
-           },
-           credits: {
-             enabled: false
-           },
-           title: {
-             text: ''
-           },
-           subtitle: {
-             text: ''
-           },
-           xAxis: [{
-             crosshair: false,
-             labels: {
-               enabled: true
-             }
-           }],
-           yAxis: [{ // Primary yAxis
-             gridLineColor: '#45B734',
-             labels: {
-               enabled: false,
-               // style: {
-               //   color: Highcharts.getOptions().colors[1]
-               // }
-             },
-             title: {
-               text: '',
-               // style: {
-               //   color: Highcharts.getOptions().colors[1]
-               // }
-             }
-           },
-           { // Secondary yAxis
-             title: {
-               text: '',
-               // style: {
-               //   color: Highcharts.getOptions().colors[0]
-               // }
-             },
-     
-             opposite: false
-           }],
-           tooltip: {
-             shared: true
-           },
-         
-           series: [{
-             showInLegend: false,
-             // borderColor: '#056B2D',
-             name: 'Count',
-             type: 'column',
-             yAxis: 1,
-             data: [23,78,89],
-            //  color: this.reflect === 'OPERATE'? "#1EAD55" : this.reflect === 'DISCONNECT'? "#6D6D6D" : "#F81301",
-             // color: "this.reflect === 'OPERATE'? #1EAD55 : this.reflect === 'DISCONNECT'? #6D6D6D : #F81301",
-             tooltip: {
-               valueSuffix: ' ',
-             }
-           }, 
-           {
-             showInLegend: false,
-             name: 'Parts',
-             type: 'spline',
-             data: [1,5,8],
-            //  color: this.reflect === 'OPERATE'? "#1EAD55" : this.reflect === 'DISCONNECT'? "#6D6D6D" : "#F81301",
-             tooltip: {
-               valueSuffix: ''
-             }
-           }
-         ]
-         });
-   
+     console.log(this.allcycle_response[1]);
+   this.parts = [];
+   this.c_time = [];
+   this.pro_number = [];
+   this.parts1 = [];
+   this.c_time1 = [];
+   this.pro_number1 = [];
+   this.parts2 = [];
+   this.c_time2 = [];
+   this.pro_number2 = [];
+   this.parts3 = [];
+   this.c_time3 = [];
+   this.pro_number3 = [];
+   for (var i in this.allcycle_response[1]) {
+    var run = parseFloat(i)
+  var part = run * 1 + 1;
+  this.parts.push(part);
   
-   }
-    this.myLoader1= false;
+  var cycle1 = this.secondsToMinutes(this.allcycle_response[1][i].cycle_time);
+  var cycle = parseFloat(cycle1);
+  
+  var pro_number = this.allcycle_response[1][i].program_number;
+  this.c_time.push(cycle);
+  this.pro_number.push(pro_number);
+  var ShiftNo = this.allcycle_response[1][i].shift_no;
+  var Time = this.allcycle_response[1][i].time;
+  }
+
+  for (var j in this.allcycle_response[2]) {
+    var run1 = parseFloat(j)
+  var part1 = run1 * 1 + 1;
+  this.parts1.push(part1);
+  
+  var cycle2 = this.secondsToMinutes(this.allcycle_response[2][j].cycle_time);
+  var cycle3 = parseFloat(cycle2);
+  
+  var pro_number1 = this.allcycle_response[2][j].program_number;
+  this.c_time1.push(cycle3);
+  this.pro_number1.push(pro_number1);
+  var ShiftNo1 = this.allcycle_response[2][j].shift_no;
+  var Time1 = this.allcycle_response[2][j].time;
+  }
+
+
+  
+  for (var k in this.allcycle_response[3]) {
+    var run2 = parseFloat(k)
+  var part2 = run2 * 1 + 1;
+  this.parts2.push(part2);
+  
+  var cycle4 = this.secondsToMinutes(this.allcycle_response[3][k].cycle_time);
+  var cycle5 = parseFloat(cycle4);
+  
+  var pro_number2 = this.allcycle_response[3][k].program_number;
+  this.c_time2.push(cycle5);
+  this.pro_number2.push(pro_number2);
+  var ShiftNo2 = this.allcycle_response[3][k].shift_no;
+  var Time2 = this.allcycle_response[3][k].time;
+  }
+
+
+  
+  for (var l in this.allcycle_response[4]) {
+    var run3 = parseFloat(l)
+  var part3 = run3 * 1 + 1;
+  this.parts3.push(part3);
+  
+  var cycle6 = this.secondsToMinutes(this.allcycle_response[4][l].cycle_time);
+  var cycle7 = parseFloat(cycle6);
+  
+  var pro_number3 = this.allcycle_response[4][l].program_number;
+  this.c_time3.push(cycle7);
+  this.pro_number3.push(pro_number3);
+  var ShiftNo3 = this.allcycle_response[4][l].shift_no;
+  var Time3 = this.allcycle_response[4][l].time;
+  }
+ console.log(this.c_time,this.pro_number,this.parts)
+
+  this.chartOptions5 = {
+    chart: {
+      type: 'column',           
+      zoomType: 'xy',
+
+      
+    
+      style: {
+        fontFamily: 'Rubik, sans-serif'
+      }
+    },
+    title: {
+      text: 'Cycle Time Chart(Mins)'
+    },
+    subtitle: {
+      // text: 'Machine ID : '+ this.macname['machine_name']+',Shift:'+ res.shift_no+' Date : 04-02-20 ',
+      text: 'Machine Name : ' + this.machineName + ', Date : ' +this.date + ',Shift :'  + ShiftNo + ',Time : ' + Time ,
+      // + ', PartsCount:' + '' + ',Program No : ' + ''
+      style: {
+        fontSize: '16px',
+        color: '#f58632',
+        fill: '#f58632'
+      }
+    },
+    xAxis: {
+      categories: (this.parts),
+      title: {
+        text: 'Parts Count'
+      }
+    },
+    yAxis: {
+      min: 0,
+      title: {
+          text: 'Time(min)'
+      },
+      stackLabels: {
+          enabled: true,
+          style: {
+              fontWeight: 'bold',
+              // color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+          }
+      }
+  },
+  tooltip: {
+          formatter: function() {
+              return 'Parts count : <b>' + this.x + '</b>, Time <b>' + this.y + ' min </b>';
+
+      }
+  },
+  plotOptions: {
+      column: {
+          pointPadding: 0.2,
+          borderWidth: 0
+      }
+  },
+  credits: {
+      enabled: false
+  },
+  colors: ['#f58632'],
+  series: [{
+      name: 'Parts Count',
+      data: this.c_time,
+      dataLabels: {
+          enabled: true,
+          color: '#292b2c',
+          align: 'center',
+          valueDecimals: 2,
+          format: '{point.y:.2f}', 
+          y: 0,
+          style: {
+              fontSize: '10px',
+              fontWeight: 'normal',
+          }
+      },
+  }]
+  }
+
+
+  this.chartOptions6 = {
+    chart: {
+      type: 'column',           
+      zoomType: 'xy',
+
+      
+    
+      style: {
+        fontFamily: 'Rubik, sans-serif'
+      }
+    },
+    title: {
+      text: 'Cycle Time Chart(Mins)'
+    },
+    subtitle: {
+      // text: 'Machine ID : '+ this.macname['machine_name']+',Shift:'+ res.shift_no+' Date : 04-02-20 ',
+      text: 'Machine Name : ' + this.machineName + ', Date : ' +this.date + ',Shift :'  + ShiftNo1 + ',Time : ' + Time1 ,
+      // + ', PartsCount:' + '' + ',Program No : ' + ''
+      style: {
+        fontSize: '16px',
+        color: '#f58632',
+        fill: '#f58632'
+      }
+    },
+    xAxis: {
+      categories: (this.parts1),
+      title: {
+        text: 'Parts Count'
+      }
+    },
+    yAxis: {
+      min: 0,
+      title: {
+          text: 'Time(min)'
+      },
+      stackLabels: {
+          enabled: true,
+          style: {
+              fontWeight: 'bold',
+              // color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+          }
+      }
+  },
+  tooltip: {
+          formatter: function() {
+              return 'Parts count : <b>' + this.x + '</b>, Time <b>' + this.y + ' min </b>';
+
+      }
+  },
+  plotOptions: {
+      column: {
+          pointPadding: 0.2,
+          borderWidth: 0
+      }
+  },
+  credits: {
+      enabled: false
+  },
+  colors: ['#f58632'],
+  series: [{
+      name: 'Parts Count',
+      data: this.c_time1,
+      dataLabels: {
+          enabled: true,
+          color: '#292b2c',
+          align: 'center',
+          valueDecimals: 2,
+          format: '{point.y:.2f}', 
+          y: 0,
+          style: {
+              fontSize: '10px',
+              fontWeight: 'normal',
+          }
+      },
+  }]
+  }
+
+  this.chartOptions7 = {
+    chart: {
+      type: 'column',           
+      zoomType: 'xy',
+
+      
+    
+      style: {
+        fontFamily: 'Rubik, sans-serif'
+      }
+    },
+    title: {
+      text: 'Cycle Time Chart(Mins)'
+    },
+    subtitle: {
+      // text: 'Machine ID : '+ this.macname['machine_name']+',Shift:'+ res.shift_no+' Date : 04-02-20 ',
+      text: 'Machine Name : ' + this.machineName + ', Date : ' +this.date + ',Shift :'  + ShiftNo2 + ',Time : ' + Time2 ,
+      // + ', PartsCount:' + '' + ',Program No : ' + ''
+      style: {
+        fontSize: '16px',
+        color: '#f58632',
+        fill: '#f58632'
+      }
+    },
+    xAxis: {
+      categories: (this.parts2),
+      title: {
+        text: 'Parts Count'
+      }
+    },
+    yAxis: {
+      min: 0,
+      title: {
+          text: 'Time(min)'
+      },
+      stackLabels: {
+          enabled: true,
+          style: {
+              fontWeight: 'bold',
+              // color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+          }
+      }
+  },
+  tooltip: {
+          formatter: function() {
+              return 'Parts count : <b>' + this.x + '</b>, Time <b>' + this.y + ' min </b>';
+
+      }
+  },
+  plotOptions: {
+      column: {
+          pointPadding: 0.2,
+          borderWidth: 0
+      }
+  },
+  credits: {
+      enabled: false
+  },
+  colors: ['#f58632'],
+  series: [{
+      name: 'Parts Count',
+      data: this.c_time2,
+      dataLabels: {
+          enabled: true,
+          color: '#292b2c',
+          align: 'center',
+          valueDecimals: 2,
+          format: '{point.y:.2f}', 
+          y: 0,
+          style: {
+              fontSize: '10px',
+              fontWeight: 'normal',
+          }
+      },
+  }]
+  }
+
+
+  this.chartOptions8 = {
+    chart: {
+      type: 'column',           
+      zoomType: 'xy',
+
+      
+    
+      style: {
+        fontFamily: 'Rubik, sans-serif'
+      }
+    },
+    title: {
+      text: 'Cycle Time Chart(Mins)'
+    },
+    subtitle: {
+      // text: 'Machine ID : '+ this.macname['machine_name']+',Shift:'+ res.shift_no+' Date : 04-02-20 ',
+      text: 'Machine Name : ' + this.machineName + ', Date : ' +this.date + ',Shift :'  + ShiftNo3 + ',Time : ' + Time3 ,
+      // + ', PartsCount:' + '' + ',Program No : ' + ''
+      style: {
+        fontSize: '16px',
+        color: '#f58632',
+        fill: '#f58632'
+      }
+    },
+    xAxis: {
+      categories: (this.parts3),
+      title: {
+        text: 'Parts Count'
+      }
+    },
+    yAxis: {
+      min: 0,
+      title: {
+          text: 'Time(min)'
+      },
+      stackLabels: {
+          enabled: true,
+          style: {
+              fontWeight: 'bold',
+              // color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+          }
+      }
+  },
+  tooltip: {
+          formatter: function() {
+              return 'Parts count : <b>' + this.x + '</b>, Time <b>' + this.y + ' min </b>';
+
+      }
+  },
+  plotOptions: {
+      column: {
+          pointPadding: 0.2,
+          borderWidth: 0
+      }
+  },
+  credits: {
+      enabled: false
+  },
+  colors: ['#f58632'],
+  series: [{
+      name: 'Parts Count',
+      data: this.c_time3,
+      dataLabels: {
+          enabled: true,
+          color: '#292b2c',
+          align: 'center',
+          valueDecimals: 2,
+          format: '{point.y:.2f}', 
+          y: 0,
+          style: {
+              fontSize: '10px',
+              fontWeight: 'normal',
+          }
+      },
+  }]
+  }
+
 
  })
 }
