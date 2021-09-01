@@ -7,6 +7,7 @@ import { DatePipe } from '@angular/common';
 import { untilDestroyed } from 'ngx-take-until-destroy';
 import Swal from 'sweetalert2';    
 import pareto from 'highcharts/modules/pareto';
+import { ExportService } from '../shared/export.service';
 
 
 declare var Highcharts: any;
@@ -21,6 +22,8 @@ require('highcharts/modules/pareto');
 })
 export class HmiComponent implements OnInit {
   chartOptions:any;
+  export_excel: any[] = [];
+
   isShow = true;
   new_date1:any;
   Highcharts: any;
@@ -57,7 +60,7 @@ export class HmiComponent implements OnInit {
   newdate:any;
   newdate1:any;
   newdates:any;
-  constructor(private nav:NavbarService,private service:HmiService,private fb:FormBuilder,private datePipe: DatePipe) {
+  constructor(private nav:NavbarService,private service:HmiService,private fb:FormBuilder,private datePipe: DatePipe,private exportService: ExportService) {
     this.nav.show();
     this.tenant=localStorage.getItem('tenant_id')
 
@@ -71,9 +74,7 @@ export class HmiComponent implements OnInit {
   {
     this.toggle=!this.toggle
   }
-  export(){
-    
-  }
+
   toHoursMinutesSeconds = totalSeconds => {
     const hours = Math.floor(totalSeconds / 3600);
     const minutes = Math.floor((totalSeconds % 3600) / 60);
@@ -147,7 +148,7 @@ export class HmiComponent implements OnInit {
       if(this.get_report.length === 0){
         Swal.fire("No Idle Reason Report Found")
       }
-      this.data = []
+      this.data = [] 
    
       for(let i in this.get_report){
 
@@ -160,6 +161,7 @@ export class HmiComponent implements OnInit {
     })
   }
 
+ 
   hmiChart(){
 
     this.chartlist = true;
