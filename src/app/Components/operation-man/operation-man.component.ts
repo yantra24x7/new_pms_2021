@@ -128,7 +128,7 @@ id_pass:any;
   }
   user():void{
     const dialogRef = this.dialog.open(Edit, {
-      width: '450px',
+      width: 'auto',
       height:'auto'
     });
     dialogRef.afterClosed().subscribe(result => {

@@ -33,7 +33,7 @@ Role_NAME:any;
 
   operator_show(value):void{
     const dialogRef = this.dialog.open(Add, {
-    width: '450px',
+    width: 'auto',
     height:'auto',
     data:{ val: value}
   });

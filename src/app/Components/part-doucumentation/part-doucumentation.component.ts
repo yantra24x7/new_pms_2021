@@ -29,7 +29,7 @@ Role_NAME:any;
   }
   operator_edit(data): void{
       const dialogRef = this.dialog.open(Add, {
-      width: '450px',
+      width: '30%',
       height:'auto',
       data:data
     });
@@ -82,8 +82,9 @@ Role_NAME:any;
   }
   user():void{
     const dialogRef = this.dialog.open(Edit, {
-      width: '450px',
-      height:'auto'
+      width: '30%',
+      height:'auto',
+      
     });
     dialogRef.afterClosed().subscribe(result => {
      

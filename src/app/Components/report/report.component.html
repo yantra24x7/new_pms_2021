@@ -60,7 +60,7 @@
               </div>
 
 
-              <div class="filter_field" *ngIf="show === 'Shiftwise' || show === 'Operatorwise'">
+              <div class="filter_field selectsplit" *ngIf="show === 'Shiftwise' || show === 'Operatorwise'">
                 <mat-form-field appearance="outline">
                   <mat-select placeholder="Select Split" matNativeControl formControlName="report_split" (selectionChange)="getresult($event.value)"
                    required>
@@ -79,7 +79,7 @@
 
              
 
-              <div class="filter_field date_picker" >            
+              <div class="filter_field date_picker d-report" >            
                 <mat-form-field appearance="fill">
                 <!-- <mat-label>From Date</mat-label> -->
                 <input matInput [matDatepicker]="picker" formControlName="start_date" placeholder="From Date" [max]='maxDate' [min]='minDate' (click)="picker.open()">
@@ -89,7 +89,7 @@
             </div>
 
 
-            <div class="filter_field date_picker">            
+            <div class="filter_field date_picker d-report">            
               <mat-form-field appearance="fill"> 
               <!-- <mat-label>To Date</mat-label> -->
               <input matInput [matDatepicker]="picker1" formControlName="end_date" placeholder="To Date"  [max]='maxDate' [min]='minDate' (click)="picker1.open()">
@@ -100,7 +100,7 @@
 
           
 
-              <div class="filter_field"  *ngIf="show === 'Shiftwise' ">
+              <div class="filter_field selectshift"  *ngIf="show === 'Shiftwise' ">
                 <mat-form-field appearance="outline">
                   <mat-select placeholder="Select Shift" matNativeControl required formControlName="shift_id">
                     <mat-option value="undefined">All</mat-option> 
@@ -141,8 +141,8 @@
     
               </ng-container>
               <ng-container matColumnDef="date">
-                <th mat-header-cell *matHeaderCellDef> Date </th>
-                <td mat-cell *matCellDef="let element"> {{element.date  || '---'}} </td>
+                <th mat-header-cell *matHeaderCellDef width="28px"> Date </th>
+                <td mat-cell *matCellDef="let element" class="nowrap"> {{element.date  || '---'}} </td>
               </ng-container>
 
               <ng-container matColumnDef="shift_no">
@@ -161,17 +161,17 @@
 
               <ng-container matColumnDef="operator_id">
                 <th mat-header-cell *matHeaderCellDef> Operator Id </th>
-                <td mat-cell *matCellDef="let element"> {{element.operator_id  || '---'}} </td>
+                <td mat-cell *matCellDef="let element" class="nowrap"> {{element.operator_id  || '---'}} </td>
               </ng-container>
 
               <ng-container matColumnDef="machine_name">
                 <th mat-header-cell *matHeaderCellDef> Machine Name </th>
-                <td mat-cell *matCellDef="let element"> {{element.machine_name  || '---'}} </td>
+                <td mat-cell *matCellDef="let element" class="nowrap"> {{element.machine_name  || '---'}} </td>
               </ng-container>
 
               <ng-container matColumnDef="machine_type">
                 <th mat-header-cell *matHeaderCellDef> Machine Type </th>
-                <td mat-cell *matCellDef="let element"> {{element.machine_type  || '---'}} </td>
+                <td mat-cell *matCellDef="let element" > {{element.machine_type  || '---'}} </td>
               </ng-container>
 
               <ng-container matColumnDef="program_number">
@@ -240,18 +240,18 @@
               </ng-container>
 
               <ng-container matColumnDef="spindle_load">
-                <th mat-header-cell *matHeaderCellDef>Spindle Load (%)</th>
+                <th mat-header-cell *matHeaderCellDef >Spindle Load (%)</th>
                 <td mat-cell *matCellDef="let element"> {{element.spindle_load  || '---'}} </td>
               </ng-container>
 
               <ng-container matColumnDef="spindle_m_temp">
-                <th mat-header-cell *matHeaderCellDef>Spindle Motor Temp(℃)</th>
+                <th mat-header-cell *matHeaderCellDef >Spindle Motor Temp(℃)</th>
                 <td mat-cell *matCellDef="let element"> {{element.spindle_m_temp  || '---'}} </td>
               </ng-container>
 
 
               <ng-container matColumnDef="servo_load">
-                <th mat-header-cell *matHeaderCellDef>Servo Load(%)</th>
+                <th mat-header-cell *matHeaderCellDef class="nowrap">Servo Load(%)</th>
                 <td mat-cell *matCellDef="let element"> 
                 <p *ngIf = "element.servo_load.length !=0">
                   <span>X axis : {{element.servo_load[0].x_axis}}</span><br>
@@ -269,7 +269,7 @@
 
 
               <ng-container matColumnDef="servo_m_temp">
-                <th mat-header-cell *matHeaderCellDef>Servo Motor Temp(℃)</th>
+                <th mat-header-cell *matHeaderCellDef class="nowrap">Servo Motor Temp(℃)</th>
                 <td mat-cell *matCellDef="let element"> 
                   
                   <!-- {{element.servo_m_temp  || '---'}}  -->
@@ -290,7 +290,7 @@
               </ng-container>
 
               <ng-container matColumnDef="puls_code">
-                <th mat-header-cell *matHeaderCellDef>Pulse Coder Temp(℃)</th>
+                <th mat-header-cell *matHeaderCellDef class="nowrap">Pulse Coder Temp(℃)</th>
                 <td mat-cell *matCellDef="let element"> 
                   
                   <!-- {{element.puls_code  || '---'}}  -->

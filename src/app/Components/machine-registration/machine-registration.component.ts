@@ -24,7 +24,7 @@ export class MachineRegistrationComponent implements OnInit {
    }
    add_registartion(): void {
     const dialogRef = this.dialog.open(Add, {
-      width: '30%',
+      // width: '30%',
       height:'auto',
     });
 
@@ -34,7 +34,7 @@ export class MachineRegistrationComponent implements OnInit {
   }
   edit_view(data1): void {
     const dialogRef = this.dialog.open(Edit, {
-      width: '30%',
+      // width: '30%',
       height:'auto',
       data:data1
     });
@@ -46,7 +46,7 @@ export class MachineRegistrationComponent implements OnInit {
   }
   setting_view(data): void {
     const dialogRef = this.dialog.open(Settings, {
-      width: '30%',
+      // width: '30%',
       height:'auto%',
       data:data
     });
@@ -64,7 +64,7 @@ export class MachineRegistrationComponent implements OnInit {
   }
   view_setting(data): void {
     const dialogRef = this.dialog.open(Distance, {
-      width: '30%',
+      // width: '30%',
       height:'auto%',
       data:data
     });

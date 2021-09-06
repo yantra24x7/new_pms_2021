@@ -48,7 +48,7 @@
                 </mat-form-field>
               </div>
 
-              <div class="filter_field" *ngIf="valuesplit === 'Shiftwise' ">
+              <div class="filter_field selectshift" *ngIf="valuesplit === 'Shiftwise' ">
                 <mat-form-field appearance="outline">
                   <mat-select placeholder="Select Shift" matNativeControl required formControlName="shift_id">
                     <!-- <mat-option value="all">All</mat-option> -->
@@ -104,11 +104,11 @@
               <!-- Position Column -->
 
               <ng-container matColumnDef="snono">
-                <th mat-header-cell *matHeaderCellDef> S.No</th>
+                <th mat-header-cell *matHeaderCellDef width="10px"> S.No</th>
                 <td mat-cell *matCellDef="let i=index;"> {{i+1}} </td>
               </ng-container>
               <ng-container matColumnDef="position">
-                <th mat-header-cell *matHeaderCellDef> Date</th>
+                <th mat-header-cell *matHeaderCellDef width="82px"> Date</th>
                 <td mat-cell *matCellDef="let element"> {{element.date  || '---'}} </td>
               </ng-container>
 
@@ -118,24 +118,24 @@
               </ng-container>
 
               <ng-container matColumnDef="weight">
-                <th mat-header-cell *matHeaderCellDef> Machine Id </th>
+                <th mat-header-cell *matHeaderCellDef width="180px" > Machine Id </th>
                 <td mat-cell *matCellDef="let element"> {{element.machine_name  || '---'}} </td>
               </ng-container>
 
               <ng-container matColumnDef="symbol">
-                <th mat-header-cell *matHeaderCellDef> Operator Name </th>
+                <th mat-header-cell *matHeaderCellDef width="130px"> Operator Name </th>
                 <td mat-cell *matCellDef="let element"> {{element.operator_name  || '---'}} </td>
               </ng-container>
 
 
               <ng-container matColumnDef="alarmtype">
-                <th mat-header-cell *matHeaderCellDef> Alarm Type </th>
+                <th mat-header-cell *matHeaderCellDef width="82px"> Alarm Type </th>
                 <td mat-cell *matCellDef="let element"> {{element.alarm_type  || '---'}} </td>
               </ng-container>
 
 
               <ng-container matColumnDef="alarmnumber">
-                <th mat-header-cell *matHeaderCellDef> Alarm Number </th>
+                <th mat-header-cell *matHeaderCellDef width="105px"> Alarm Number </th>
                 <td mat-cell *matCellDef="let element"> {{element.alarm_no  || '---'}} </td>
               </ng-container>
 
@@ -148,7 +148,7 @@
 
             
               <ng-container matColumnDef="alarmtime">
-                <th mat-header-cell *matHeaderCellDef> Alarm Time </th>
+                <th mat-header-cell *matHeaderCellDef width="95px"> Alarm Time </th>
                 <td mat-cell *matCellDef="let element"> {{element.alarm_time  | date:' HH:mm:ss a'}} </td>
               </ng-container>
 
