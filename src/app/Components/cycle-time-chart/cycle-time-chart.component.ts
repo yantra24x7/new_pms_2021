@@ -45,6 +45,7 @@ export class CycleTimeChartComponent implements OnInit {
   myLoader2 = false;
   myLoader3 = false;
   // acc:any[];
+  partn_length:any;
   machineName:any;
   machineID:any;
   shiftNo:any;
@@ -155,12 +156,13 @@ export class CycleTimeChartComponent implements OnInit {
     this.parts = [];
     this.c_time = [];
     this.pro_number = [];
-
 for (var i in this.allcycletime) {
   var run = parseFloat(i)
 var part = run * 1 + 1;
 this.parts.push(part);
-
+console.log(this.parts.length) 
+this.partn_length = this.allcycletime.length;
+console.log(this.partn_length)
 var cycle1 = this.secondsToMinutes(this.allcycletime[i].cycle_time);
 var cycle = parseFloat(cycle1);
 
@@ -195,8 +197,7 @@ this.diffparts = uniqs;
         },
         subtitle: {
           // text: 'Machine ID : '+ this.macname['machine_name']+',Shift:'+ res.shift_no+' Date : 04-02-20 ',
-          text: 'Machine Name : ' + this.machineName + ', Date : ' +this.date + ',Shift :'  + this.shiftpatch + ',Time : ' + this.sho_tim ,
-          // + ', PartsCount:' + '' + ',Program No : ' + ''
+          text: 'Machine Name : ' + this.machineName + ', Date : ' +this.date + ',Shift :'  + this.shiftpatch + ',Time : ' + this.sho_tim  + ', Parts Count:' + this.partn_length + ',Program No : ' + this.pro_number,
           style: {
             fontSize: '16px',
             color: '#f58632',
