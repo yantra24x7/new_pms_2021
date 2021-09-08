@@ -7,37 +7,46 @@
           <mat-icon> insert_chart</mat-icon>
           <span class="v-align-middle">Cycle Time Chart</span>
         </h2>
-        <form [formGroup]="table" >
-          <div class="filter_sec"> 
-            <div class="filter_field">
-              <mat-form-field appearance="outline">
-                <mat-select required formControlName="machine_id">
-                  <mat-option *ngFor="let machine of machine_response"  [value]="machine.machine_name" (click)="getmachine(machine.machine_name,machine.id)">{{machine.machine_name}}</mat-option>
-                </mat-select>
-              </mat-form-field>
-
-            </div>
-            <div class="filter_field">
-              <mat-form-field appearance="outline">
-                <mat-select required formControlName="shift_id">
-                  <mat-option *ngFor="let shift of shift_response" [value]="shift.shift_no" (click)="getshift(shift.id,shift.shift_no)">{{shift.shift_no}}</mat-option>
-                </mat-select>
-              </mat-form-field>
-            </div>
-            <div class="filter_field date_picker">  
-                            
-                <mat-form-field>
-                    <mat-label>Date</mat-label>
-                    <input matInput [matDatepicker]="picker" formControlName="date" (dateInput)="addEvent('input', $event)" (dateChange)="addEvent('change', $event)">
-                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
-                  </mat-form-field>
-            </div>
-            <button mat-raised-button class="filter_btn btn_orange" (click)="tableview()">
-              Report</button>
-          </div>
-        </form>
+       
       </div>
+      <mat-card class="card_sec">
+        <mat-card-content>
+          <form [formGroup]="table" >
+            <div class="filter_sec"> 
+              <div class="filter_field">
+                <mat-form-field appearance="outline">
+                  <mat-select required formControlName="machine_id">
+                    <mat-option *ngFor="let machine of machine_response"  [value]="machine.machine_name" (click)="getmachine(machine.machine_name,machine.id)">{{machine.machine_name}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+    
+              </div>
+              <div class="filter_field">
+                <mat-form-field appearance="outline">
+                  <mat-select required formControlName="shift_id">
+                    <mat-option *ngFor="let shift of shift_response" [value]="shift.shift_no" (click)="getshift(shift.id,shift.shift_no)">{{shift.shift_no}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="filter_field date_picker">  
+                              
+                  <mat-form-field>
+                      <mat-label>Date</mat-label>
+                      <input matInput [matDatepicker]="picker" formControlName="date" (dateInput)="addEvent('input', $event)" (dateChange)="addEvent('change', $event)">
+                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                      <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
+                    </mat-form-field>
+              </div>
+              <button mat-raised-button class="filter_btn btn_orange" (click)="tableview()">
+                Report</button>
+            </div>
+          </form>
+        </mat-card-content>
+      </mat-card>
+       
+
+
+      
       <div>
         <div *ngIf="myLoader" class="spinner">
           <img src="assets/images/spinner.gif">

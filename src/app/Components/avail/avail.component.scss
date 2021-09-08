@@ -31,5 +31,12 @@
             }
         }
     }
-  
+    @media only screen and (min-width: 320px) and (max-width: 576px) {
+      
+    .filter_sec {
+      /* display: -webkit-box; */
+      display: block;
+    }
+    
+    }
     

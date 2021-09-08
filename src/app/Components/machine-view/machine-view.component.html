@@ -89,25 +89,25 @@
                                     <div class="circle_progress_wrapper utilization_chart">
                                         <span>Utilization</span>
                                         <circle-progress percent="{{machie_status?.utilization}}" radius="100"
-                                            outerStrokeColor="#48ba46" innerStrokeColor="#78542C" animation="true"
+                                            outerStrokeColor="#48ba46" innerStrokeColor="#27272e" animation="true"
                                             *ngIf="machie_status?.machine_status =='3'" animationDuration="300">
                                         </circle-progress>
 
 
                                         <circle-progress percent="{{machie_status?.utilization}}" radius="100"
-                                            outerStrokeColor="#F53E17" innerStrokeColor="#78542C" animation="true"
+                                            outerStrokeColor="#F53E17" innerStrokeColor="#27272e" animation="true"
                                             *ngIf="machie_status?.machine_status =='100'" animationDuration="300">
                                         </circle-progress>
 
 
                                         <circle-progress percent="{{machie_status?.utilization}}" radius="100"
-                                            outerStrokeColor="#DBCF19" innerStrokeColor="#78542C" animation="true"
+                                            outerStrokeColor="#DBCF19" innerStrokeColor="#27272e" animation="true"
                                             *ngIf="machie_status?.machine_status !='3' && machie_status?.machine_status !='100' && machie_status?.machine_status != null "
                                             animationDuration="300"></circle-progress>
 
 
                                         <circle-progress percent="{{machie_status?.utilization}}" radius="100"
-                                            outerStrokeColor="#A1A099" innerStrokeColor="#78542C" animation="true"
+                                            outerStrokeColor="#A1A099" innerStrokeColor="#27272e" animation="true"
                                             *ngIf="machie_status?.machine_status !='3' && machie_status?.machine_status !='100' && machie_status?.machine_status == null "
                                             animationDuration="300"></circle-progress>
                                     </div>
@@ -215,8 +215,8 @@
 
                                 <div class="as-axis">
                                     <div *ngIf="saxi0">
-                                        <circle-progress radius="50" percent={{saxi0}} outerStrokeColor="#48ba46" unitsColor="#f7941d" titleColor="#f7941d" [showSubtitle]="false" unitsFontSize="20px" 
-                                            innerStrokeColor="#78542C" animation="true" animationDuration="300">
+                                        <circle-progress radius="50" percent={{saxi0}} outerStrokeColor="#009DDC" unitsColor="#f7941d" titleColor="#f7941d" [showSubtitle]="false" unitsFontSize="20px" 
+                                            innerStrokeColor="#27272e" animation="true" animationDuration="300">
                                         </circle-progress>
                                         <p class="text-center">{{ax1_key}}</p>
                                     </div>
@@ -224,32 +224,32 @@
                                     
 
                                     <div *ngIf="ax2_key">
-                                        <circle-progress radius="50" percent={{saxi1}} outerStrokeColor="#48ba46" unitsColor="#f7941d" titleColor="#f7941d" [showSubtitle]="false" unitsFontSize="20px"
-                                            innerStrokeColor="#78542C" animation="true" animationDuration="300">
+                                        <circle-progress radius="50" percent={{saxi1}} outerStrokeColor="#009DDC" unitsColor="#f7941d" titleColor="#f7941d" [showSubtitle]="false" unitsFontSize="20px"
+                                            innerStrokeColor="#27272e" animation="true" animationDuration="300">
                                         </circle-progress>
                                         <p class="text-center">{{ax2_key}}</p>
                                     </div>
                                    
 
                                     <div *ngIf="ax3_key">
-                                        <circle-progress radius="50" percent={{saxi2}} outerStrokeColor="#48ba46" unitsColor="#f7941d" titleColor="#f7941d" [showSubtitle]="false" unitsFontSize="20px"
-                                            innerStrokeColor="#78542C" animation="true" animationDuration="300">
+                                        <circle-progress radius="50" percent={{saxi2}} outerStrokeColor="#009DDC" unitsColor="#f7941d" titleColor="#f7941d" [showSubtitle]="false" unitsFontSize="20px"
+                                            innerStrokeColor="#27272e" animation="true" animationDuration="300">
                                         </circle-progress>
                                         <p class="text-center">{{ax3_key}}</p>
                                     </div>
                                    
  
                                     <div *ngIf="ax4_key">
-                                        <circle-progress radius="50" percent={{saxi3}} outerStrokeColor="#48ba46" unitsColor="#f7941d" titleColor="#f7941d" [showSubtitle]="false" unitsFontSize="20px"
-                                            innerStrokeColor="#78542C" animation="true" animationDuration="300">
+                                        <circle-progress radius="50" percent={{saxi3}} outerStrokeColor="#009DDC" unitsColor="#f7941d" titleColor="#f7941d" [showSubtitle]="false" unitsFontSize="20px"
+                                            innerStrokeColor="#27272e" animation="true" animationDuration="300">
                                         </circle-progress>
                                         <p class="text-center">{{ax4_key}}</p>
                                     </div>
                                    
 
                                     <div *ngIf="ax5_key">
-                                        <circle-progress radius="50" percent={{saxi4}} outerStrokeColor="#48ba46" unitsColor="#f7941d" titleColor="#f7941d" [showSubtitle]="false" unitsFontSize="20px"
-                                            innerStrokeColor="#78542C" animation="true" animationDuration="300">
+                                        <circle-progress radius="50" percent={{saxi4}} outerStrokeColor="#009DDC" unitsColor="#f7941d" titleColor="#f7941d" [showSubtitle]="false" unitsFontSize="20px"
+                                            innerStrokeColor="#27272e" animation="true" animationDuration="300">
                                         </circle-progress>
                                         <p class="text-center">{{ax5_key}}</p>
                                     </div>
@@ -282,30 +282,17 @@
                             </div>
 
                             <div class="col-lg-4 col-md-12 col-xs-12 main_col sec_last">
-                                <div class="bg_grad donut_small bg_grad_temp time_sec">
-                                    <div class="mac_ut">
-                                        <h5>Last Cycle time</h5>
-                                        <span class="mac_ut_time">{{machie_status?.cycle_time}}</span>
-                                    </div>
-                                    <div class="mac_ut brdr_mid">
-                                        <h5>Last cutting time</h5>
-                                        <span class="mac_ut_time">{{machie_status?.cutting_time}}</span>
-                                    </div>
-                                    <div class="mac_ut">
-                                        <h5>total run time</h5>
-                                        <span class="mac_ut_time">{{machie_status?.total_run_time}}</span>
-                                    </div>
-                                </div>
+                               
                                 <div class="container one">
                                     <h2>Pulse Coder Temperature</h2>
-                                    <div class="bg_grad donut_small bg_grad_temp">
+                                    <div class="bg_grad donut_small bg_grad_temp as-temp-font">
 
                                         <div class="row_sec temperature" *ngFor="let pu of machie_statusnew | keyvalue">
                                             <div class="col brdr_right axis_display">
                                                 <div class="gradient-wrapper servo_motor_chart">
-                                                    <circle-progress  [percent]=pu.value [radius]="100" units="°C" [showSubtitle]="false"
-                                                        [outerStrokeWidth]="16" [innerStrokeWidth]="16"
-                                                        [outerStrokeColor]="'#48ba46'" [innerStrokeColor]="'#78542C'"
+                                                    <circle-progress  [percent]=pu.value [radius]="50" units="°C" [showSubtitle]="false"
+                                                        [outerStrokeWidth]="12" [innerStrokeWidth]="12" [titleFontSize]="12" [unitsFontSize]="12"
+                                                        [outerStrokeColor]="'#48ba46'" [innerStrokeColor]="'#27272e'"
                                                         [animation]="true" [animationDuration]="300"></circle-progress>
                                                 </div>
                                                 <p>{{pu.key}}</p>
@@ -315,14 +302,14 @@
                                     </div>
                                 </div>
                                 <h2>Servo Motor Temperature</h2>
-                                <div class="bg_grad donut_small bg_grad_temp">
+                                <div class="bg_grad donut_small bg_grad_temp as-temp-font">
 
                                     <div class="row_sec temperature" *ngFor="let te of machie_statustemp | keyvalue">
                                         <div class="col brdr_right axis_display">
                                             <div class="gradient-wrapper servo_motor_chart">
-                                                <circle-progress [percent]=te.value [radius]="100" units="°C" [showSubtitle]="false"
-                                                    [outerStrokeWidth]="16" [innerStrokeWidth]="16"
-                                                    [outerStrokeColor]="'#48ba46'" [innerStrokeColor]="'#78542C'"
+                                                <circle-progress [percent]=te.value [radius]="50" units="°C" [showSubtitle]="false"
+                                                    [outerStrokeWidth]="12" [innerStrokeWidth]="12"
+                                                    [outerStrokeColor]="'#48ba46'" [innerStrokeColor]="'#27272e'"
                                                     [animation]="true" [animationDuration]="300"></circle-progress>
                                             </div>
                                             <p>{{te.key}}</p>
@@ -339,7 +326,7 @@
                                             <div class="gradient-wrapper servo_motor_chart seperate">
                                                 <circle-progress [percent]=machie_status?.spindle_load [radius]="100" [showSubtitle]="false"
                                                     [outerStrokeWidth]="16" [innerStrokeWidth]="16"
-                                                    [outerStrokeColor]="'#48ba46'" [innerStrokeColor]="'#78542C'"
+                                                    [outerStrokeColor]="'#48ba46'" [innerStrokeColor]="'#27272e'"
                                                     [animation]="true" [animationDuration]="300"></circle-progress>
                                             </div>
                                             <p style="font-size: 14px;">Load</p>
@@ -348,11 +335,26 @@
                                             <div class="gradient-wrapper servo_motor_chart seperate">
                                                 <circle-progress [percent]=machie_status?.sp_temp [radius]="100" units="°C"  [showSubtitle]="false"
                                                     [outerStrokeWidth]="16" [innerStrokeWidth]="16"
-                                                    [outerStrokeColor]="'#48ba46'" [innerStrokeColor]="'#78542C'"
+                                                    [outerStrokeColor]="'#48ba46'" [innerStrokeColor]="'#27272e'"
                                                     [animation]="true" [animationDuration]="300"></circle-progress>
                                             </div>
                                             <p style="font-size: 14px;">Motor Temperature</p>
                                         </div>
+                                    </div>
+                                </div>
+
+                                <div class="bg_grad donut_small bg_grad_temp time_sec">
+                                    <div class="mac_ut">
+                                        <h5>Last Cycle time</h5>
+                                        <span class="mac_ut_time">{{machie_status?.cycle_time}}</span>
+                                    </div>
+                                    <div class="mac_ut brdr_mid">
+                                        <h5>Last cutting time</h5>
+                                        <span class="mac_ut_time">{{machie_status?.cutting_time}}</span>
+                                    </div>
+                                    <div class="mac_ut">
+                                        <h5>total run time</h5>
+                                        <span class="mac_ut_time">{{machie_status?.total_run_time}}</span>
                                     </div>
                                 </div>
                             </div>

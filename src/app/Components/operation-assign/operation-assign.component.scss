@@ -43,10 +43,13 @@ font-size: 25px !important;
 .table_responsive.sep tr:nth-child(odd) {
 background: #f4f4f4;
 }
-
-mat-card-content.table-responsive.mat-card-content {
-  height: 500px;
+.table_action {
+ 
+  margin-bottom: 0px;
 }
+// mat-card-content.table-responsive.mat-card-content {
+//   height: 500px;
+// }
 
 mat-card-content.table-responsive.mat-card-content::-webkit-scrollbar {
   background: transparent !important;

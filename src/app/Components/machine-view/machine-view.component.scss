@@ -503,6 +503,7 @@
                 }
               }
 
+
               .axis_display {
                 text-align: center;
 
@@ -769,6 +770,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 
 .text-center {
@@ -898,12 +900,16 @@
 .bg_grad.donut_small.bg_grad_temp {
   display: flex;
   border: 0px !important;
+  justify-content: space-evenly;
 }
-
+.page {
+  background-color: #202328;
+}
 .row_spindle {
   display: flex;
   margin-top: 0px;
   text-align: center;
+  justify-content: space-evenly;
 }
 
 mat-icon.mat-icon.notranslate.material-icons.mat-icon-no-color {
