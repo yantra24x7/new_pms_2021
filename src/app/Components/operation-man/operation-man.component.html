@@ -9,15 +9,16 @@
           <mat-icon>supervisor_account</mat-icon>
           <span class="v-align-middle">Operation Management</span>
         </h2>
-        <div>
+        <div class="forbtn">
           <!-- <button (click)="exporter.exportTable('xlsx',{fileName:'Operation Management'})">Export</button> -->
-          <button mat-raised-button class="filter_btn btn_orange ml-16" (click)="exporter.exportTable('xlsx',{fileName:'Operation Management'})"> Export</button>
+          <button  class="export"  (click)="exporter.exportTable('xlsx',{fileName:'Operation Management'})"> Export</button>
+          <div class="add_new" >
+            <mat-icon class="circle" (click)="user()" *ngIf = "Role_NAME == 'Admin' || Role_NAME == 'Manager'">add</mat-icon>
+            <mat-icon class="circle" (click)="usernot()" *ngIf = "Role_NAME == 'Supervisor'">add</mat-icon>
+  
+          </div>
         </div>
-        <div class="add_new" >
-          <mat-icon class="circle" (click)="user()" *ngIf = "Role_NAME == 'Admin' || Role_NAME == 'Manager'">add</mat-icon>
-          <mat-icon class="circle" (click)="usernot()" *ngIf = "Role_NAME == 'Supervisor'">add</mat-icon>
-
-        </div>
+        
       
       </div>
       <mat-card class="card_sec">

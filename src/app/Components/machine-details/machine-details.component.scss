@@ -288,11 +288,11 @@
     }
 }
 @media only screen and (max-width:600px) {
-
+    
     #page_area.page #machine_details_sec.machines_details .machine_item_details .machine_info .info_box_list {
-        margin-top: 70px !important;
+        margin-top: 70px ;
     }
-
+    
     #page_area.page #machine_details_sec.machines_details .machine_item_details .machine_info .machine_total {
         position: absolute;
         top: 45px;
@@ -361,4 +361,23 @@ and (orientation: landscape) {
         }
     }
 
+}
+
+@media only screen and (min-width: 320px) and (max-width: 576px) {
+    #page_area.page .page_title_sec .machine_identifier  li:last-child{
+        margin-left: -8px;
+    }
+    .add1_btn {
+       
+        padding: 10px 6px;
+      
+        font-size: 21px;
+        margin: -3px;
+    }
+   
+    
+    #page_area.page #machine_details_sec.machines_details .machine_item_details .machine_info .info_box_list
+    {
+        margin-top: 70px ;
+    }
 }

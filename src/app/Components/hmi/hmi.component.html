@@ -90,7 +90,7 @@
               <table class="table">
                   <thead>
                       <tr>
-                          <th >S.no</th>
+                          <th width="20px">S.no</th>
                           <th width="100px">Date</th>
 
                           <th width="100px">Shift Num</th>
@@ -100,7 +100,7 @@
                           <th width="90px">Start Time</th>
                           
                           <th width="90px">End Time</th>
-                          <th>Duration</th>
+                          <th  width="50px">Duration</th>
                       </tr>
                      
                   </thead>
@@ -113,9 +113,9 @@
                           <td>{{g_report?.machine_name || '---'}}</td>
                            <td>{{g_report?.operator_name || '---'}}</td>
                           <td>{{show_report?.idle_reason || '---'}}</td>
-                          <td>{{show_report?.idle_start | date:'MM-dd-yyyy ; HH:mm:ss'}}</td>
+                          <td class="as-nowrap">{{show_report?.idle_start | date:'MM-dd-yyyy ; HH:mm:ss'}}</td>
                        
-                          <td>{{show_report?.idle_end | date:'MM-dd-yyyy ; HH:mm:ss'}}</td>
+                          <td class="as-nowrap">{{show_report?.idle_end | date:'MM-dd-yyyy ; HH:mm:ss'}}</td>
                           <td>{{data[i]}}</td>
                       </tr>
                   </tbody>

@@ -12,7 +12,15 @@
   width: auto;
   z-index: 999;
 }
-
+*::-webkit-scrollbar-thumb {
+  min-height: 100px;
+    max-height: 30px;
+    background-color: #4e5058;
+  }
+  // .card_sec.mat-card{
+  //   height: 73vh;
+  //   overflow: auto;
+  // }
 .spinner img {
   width: 90px;
   margin-top: -130px;
@@ -37,10 +45,16 @@ align-items: start;
 overflow: auto;
 }
 
-tbody:nth-child(even) {
-background: #E7E5E5;
+thead tr {
+  background: #736f6f;
+  color: white;
 }
-
+tbody:nth-child(even) {
+background: #ffffff;
+}
+tbody{
+  border-bottom: 1px solid black;
+}
 table.table {
   border-collapse: collapse;
 }
