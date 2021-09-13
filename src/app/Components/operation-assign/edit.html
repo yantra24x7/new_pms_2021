@@ -38,8 +38,8 @@
 
 
 
-                  <div class="filter_field date_picker">
-                    <mat-form-field appearance="fill">
+                  <div class="filter_field">
+                    <mat-form-field appearance="outline">
                       <!-- <mat-label>From Date</mat-label> -->
                       <input matInput [matDatepicker]="picker" placeholder='From Date' formControlName="date" (click)="picker.open()" [min]="minDate">
                       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>

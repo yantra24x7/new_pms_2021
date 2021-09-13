@@ -1300,10 +1300,10 @@ h1:hover {
    
 }
 // div#cdk-overlay-0,
- div#cdk-overlay-2 {
+//  div#cdk-overlay-2 {
    
-    width: 30%;
-}
+//     width: 30%;
+// }
 
 // .page .page_title_sec{
 //     align-items: center;
@@ -1479,7 +1479,19 @@ and (-webkit-min-device-pixel-ratio: 2)
         width: 18%;
     }
 }
-
+@media only screen and (max-width:1270px){
+    .filter_sec_form {
+        
+        flex-wrap: wrap !important;
+    }
+}
+@media only screen and (max-width:1366px){
+    .filter_sec_form {
+        
+        flex-wrap: wrap !important;
+    }
+   
+}
 @media only screen and (max-width:1920px){
     .filter_sec .filter_field.date_picker {
         width: 14%;

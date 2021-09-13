@@ -66,3 +66,10 @@ and (-webkit-min-device-pixel-ratio: 2)
         width: 18%;
     }
 }
+
+@media only screen and (max-width:1366px){
+ 
+  .filter_sec .filter_field.date_picker {
+      width: 14%;
+  }
+}
