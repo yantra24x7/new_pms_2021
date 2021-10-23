@@ -47,7 +47,7 @@
                                      
                                         Edit
                                     </button>
-                                    <button mat-menu-item (click)="setting_view(machine,machine.id)" *ngIf = "Role_NAME == 'Admin' || Role_NAME == 'Manager'">
+                                    <button mat-menu-item (click)="setting_view(machine)" *ngIf = "Role_NAME == 'Admin' || Role_NAME == 'Manager'">
                                      
                                         Setting 
                                     </button>
@@ -55,7 +55,7 @@
                                     <button mat-menu-item (click)="usernot()" *ngIf = "Role_NAME == 'Supervisor'">
                                      
                                         Setting
-                                    </button>
+                                    </button> 
                                     <button mat-menu-item (click)="delete_view(machine.id)" *ngIf = "Role_NAME == 'Admin' || Role_NAME == 'Manager'">
                                       
                                         Delete
