@@ -25,7 +25,7 @@
                 <form [formGroup]="login" (ngSubmit)="loginfunc()" class="filter_sec_form">
                 <div class="filter_field">
                   <mat-form-field appearance="outline">
-                    <mat-select placeholder="Select Machine" matNativeControl required formControlName="machine_id">
+                    <mat-select placeholder="VEW/TC/F/VALVE-55" matNativeControl required formControlName="machine_id">
   
                       <mat-option *ngFor="let machine of machine_response" [value]="machine.id">
                         {{machine.machine_name}}
@@ -37,7 +37,7 @@
               
                 <div class="filter_field">
                   <mat-form-field appearance="outline">
-                    <mat-select placeholder="Select Shift" matNativeControl required formControlName="shift_id">
+                    <mat-select placeholder="All" matNativeControl required formControlName="shift_id">
                       <!-- <mat-option value="all">All</mat-option> -->
                       <mat-option value="undefined">All</mat-option> 
                        <mat-option *ngFor="let shift of shift_response" [value]="shift.id">{{shift.shift_no}}
@@ -49,7 +49,7 @@
                 <div class="filter_field date_picker">
                 <mat-form-field appearance="fill">
                   <!-- <mat-label>From Date</mat-label> -->
-                  <input matInput [matDatepicker]="picker" placeholder='From Date' formControlName="start_date" (click)="picker.open()">
+                  <input matInput [matDatepicker]="picker" placeholder='01/11/2021' formControlName="start_date" (click)="picker.open()">
                   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                   <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
                 </mat-form-field>
@@ -59,7 +59,7 @@
                              
                 <mat-form-field appearance="fill">
                     <!-- <mat-label>To Date</mat-label> -->
-                    <input matInput [matDatepicker]="picker1" placeholder='To Date' formControlName="end_date" (click)="picker1.open()">
+                    <input matInput [matDatepicker]="picker1" placeholder='01/11/2021' formControlName="end_date" (click)="picker1.open()">
                     <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
                     <mat-datepicker #picker1 startView="year" [startAt]="endDate"></mat-datepicker>
                   </mat-form-field>
@@ -72,16 +72,152 @@
           </mat-card-content>
         </mat-card>
   
+        <div  class="section_top_padding">
+          <mat-card class="card_sec">
+            <div class="table_wrapper">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th width="20px">S.no</th>
+                            <th width="100px">Date</th>
+  
+                            <th width="100px">Shift Num</th>
+                            <th width="175px">Machine Name</th>
+                            <th width="175px">Part Name</th>
+                            <th width="175px">Part No</th>
+
+                            <th width="200px">Operator Name</th>
+                            <th width="200px">Operator No</th>
+
+                            <th width="200px">Hourly Target</th>
+                            <th width="90px">Hour 1</th>
+                            <th width="90px">Hour 2</th>
+                            <th width="90px">Hour 3</th>
+                            <th width="90px">Hour 4</th>
+
+                            <th width="90px">Plann.Qty</th>
+                            <th  width="50px">Actual Qty</th>
+                            <th  width="50px">Utilization</th>
+
+                        </tr>
+                       
+                    </thead>
+                    <tbody  >
+                        <tr >
+                            <td>1</td>
+                            <td>01/11/2021</td>
+                            <td>1</td>
+  
+                            <td>VEW/TC/F/VALVE-55	</td>
+                             <td>Manufacturing Part 7	</td>
+                            <td>10</td>
+                            <td class="as-nowrap">Suresh	</td>
+                         
+                            <td class="as-nowrap">1007	</td>
+                            <td>30</td>
+                            <td>24</td>
+                            <td>25</td>
+                            <td>24</td>
+                            <td>23</td>
+                            <td>120</td>
+                            <td>96</td>
+                            <td>80</td>
+
+                        </tr>
+                        <tr >
+                          <td>2</td>
+                          <td>01/11/2021</td>
+                          <td>2</td>
+
+                          <td>VEW/TC/F/VALVE-55	</td>
+                           <td>Manufacturing Part 7	</td>
+                          <td>10</td>
+                          <td class="as-nowrap">Thooyavan	</td>
+                       
+                          <td class="as-nowrap">1008	</td>
+                          <td>30</td>
+                          <td>20</td>
+                          <td>23</td>
+                          <td>24</td>
+                          <td>24</td>
+                          <td>120</td>
+                          <td>91</td>
+                          <td>75.83</td>
+
+                      </tr>
+                      <tr >
+                        <td>3</td>
+                        <td>01/11/2021</td>
+                        <td>3</td>
+
+                        <td>VEW/TC/F/VALVE-55	</td>
+                         <td>Manufacturing Part 7	</td>
+                        <td>10</td>
+                        <td class="as-nowrap">Mani		</td>
+                     
+                        <td class="as-nowrap">1009	</td>
+                        <td>30</td>
+                        <td>23</td>
+                        <td>24</td>
+                        <td>24</td>
+                        <td>25</td>
+                        <td>120</td>
+                        <td>96</td>
+                        <td>80</td>
+
+                    </tr>
+                    
+                    <tr >
+                      <td></td>
+                      <td></td>
+                      <td></td>
+
+                      <td></td>
+                       <td></td>
+                      <td></td>
+                      <td class="as-nowrap">		</td>
+                   
+                      <td class="as-nowrap">	</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td><b>TOTAL</b></td>
+                      <td>360</td>
+                      <td>283</td>
+                      <td>78.61</td>
+
+                  </tr>
+                    </tbody>
+                </table>
+             
+                <!-- <div class="duke">
+                    Duration: {{get_duration}}
+                </div> -->
+            </div>
+           
+            <mat-card-content *ngIf="no_data?.length==0" class="no_data_found">
+              <h2>No data found</h2>
+            </mat-card-content> 
+            
+         
+            
+  
+  
+        
+  
+        </mat-card>
+        <!-- <div *ngIf="no_data?.length==0" class="no_data_found">
+          <h4>Nop Data Found</h4>
+      </div> -->
+        </div>
         <!-- filter_sec end-->
-        <div class="section_padding">
+        <!-- <div class="section_padding">
           <mat-card class="card_sec">
             <mat-card-content class="table_responsive">
               <table mat-table [dataSource]="dataSource" class="mat-elevation-z0">
   
-                <!--- Note that these columns can be defined in any order.
-            The actual rendered columns are set as a property on the row definition" -->
-  
-                <!-- Position Column -->
+               
 
                 <ng-container matColumnDef="posi">
                   <th mat-header-cell *matHeaderCellDef>S.No</th>
@@ -104,73 +240,75 @@
                   <td mat-cell *matCellDef="let element"> {{element.shift_no  || '---'}} </td>
                 </ng-container>
   
-                <ng-container matColumnDef="symbol">
-                  <th mat-header-cell *matHeaderCellDef>Operator Name</th>
-                  <td mat-cell *matCellDef="let element"> {{element.operator_name  || '---'}} </td>
-                </ng-container>
   
   
                 <ng-container matColumnDef="alarmtype">
-                  <th mat-header-cell *matHeaderCellDef> Total Hours </th>
+                  <th mat-header-cell *matHeaderCellDef> Part Name</th>
                   <td mat-cell *matCellDef="let element"> {{element.actual_working_hours  || '---'}} </td>
                 </ng-container>
   
   
                 <ng-container matColumnDef="alarmnumber">
-                  <th mat-header-cell *matHeaderCellDef> Actual Working Hours </th>
+                  <th mat-header-cell *matHeaderCellDef> Part Number </th>
                   <td mat-cell *matCellDef="let element"> {{element.total_time  || '---'}} </td>
                 </ng-container>
   
-  
-             
                 <ng-container matColumnDef="alarmmessage">
-                  <th mat-header-cell *matHeaderCellDef> Operating Hours </th>
+                  <th mat-header-cell *matHeaderCellDef> Operating Number </th>
                   <td mat-cell *matCellDef="let element"> {{element.actual_running  || '---'}} </td>
                 </ng-container>
   
+                
+                <ng-container matColumnDef="symbol">
+                  <th mat-header-cell *matHeaderCellDef>Operator Name</th>
+                  <td mat-cell *matCellDef="let element"> {{element.operator_name  || '---'}} </td>
+                </ng-container>
+  
+             
+               
               
                 <ng-container matColumnDef="alarmtime">
-                  <th mat-header-cell *matHeaderCellDef> Target </th>
+                  <th mat-header-cell *matHeaderCellDef> Hourly Target </th>
                   <td mat-cell *matCellDef="let element"> {{element.target || '---'}} </td>
                 </ng-container>
   
 
                 <ng-container matColumnDef="produced">
-                  <th mat-header-cell *matHeaderCellDef>Actual</th>
+                  <th mat-header-cell *matHeaderCellDef>Hour 1</th>
                   <td mat-cell *matCellDef="let element"> {{element.actual || '---'}} </td>
                 </ng-container>
                 
                
                 <ng-container matColumnDef="rejecet">
-                  <th mat-header-cell *matHeaderCellDef>Rejected Qty</th>
+                  <th mat-header-cell *matHeaderCellDef>Hour 2</th>
                   <td mat-cell *matCellDef="let element"> {{element.reject || '---'}} </td>
                 </ng-container>
 
                  
                 <ng-container matColumnDef="rework">
-                  <th mat-header-cell *matHeaderCellDef>Rework Qty</th>
+                  <th mat-header-cell *matHeaderCellDef>Hour 3</th>
                   <td mat-cell *matCellDef="let element"> {{element.rework  || '---'}} </td>
                 </ng-container>
 
                 <ng-container matColumnDef="avail">
-                  <th mat-header-cell *matHeaderCellDef>Availabilty</th>
+                  <th mat-header-cell *matHeaderCellDef>Hour 4</th>
                   <td mat-cell *matCellDef="let element"> {{element.availability || '---'}} </td>
                 </ng-container>
 
 
                 <ng-container matColumnDef="perfor">
-                  <th mat-header-cell *matHeaderCellDef>Performance</th>
+                  <th mat-header-cell *matHeaderCellDef>Plann.Qty</th>
                   <td mat-cell *matCellDef="let element"> {{element.perfomance || '---'}} </td>
                 </ng-container>
 
                 <ng-container matColumnDef="quali">
-                  <th mat-header-cell *matHeaderCellDef>Qulaity</th>
+                  <th mat-header-cell *matHeaderCellDef>Actual Qty</th>
                   <td mat-cell *matCellDef="let element"> {{element.quality  || '---'}} </td>
                 </ng-container>
 
 
                 <ng-container matColumnDef="oee">
-                  <th mat-header-cell *matHeaderCellDef>OEE</th>
+                  <th mat-header-cell *matHeaderCellDef>Utilization</th>
                   <td mat-cell *matCellDef="let element"> {{element.oee || '---'}} </td>
                 </ng-container>
                 
@@ -179,11 +317,9 @@
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
               </table>
             </mat-card-content>
-             <!-- <mat-card-content *ngIf="alarmreport?.length==0" class="no_data_found">
-              <h2>No data found</h2>
-            </mat-card-content>  -->
+           
           </mat-card>
-        </div>
+        </div> -->
         
       </div>
     </div>

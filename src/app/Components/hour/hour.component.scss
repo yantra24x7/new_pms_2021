@@ -1,0 +1,60 @@
+.spinner {
+    background: #262932;
+    height: 100vh;
+    opacity: 0.9;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: auto;
+    z-index: 999;
+  }
+  *::-webkit-scrollbar-thumb {
+    min-height: 100px;
+      max-height: 30px;
+      background-color: #4e5058;
+    }
+    // .card_sec.mat-card{
+    //   height: 73vh;
+    //   overflow: auto;
+    // }
+  .spinner img {
+    width: 90px;
+    margin-top: -130px;
+  }
+  
+  //   .card_sec.sep_crt.rect.highcharts-point {
+  //     fill: #F7941D !important;
+  // }
+  button.highcharts-a11y-proxy-button {
+  fill: #F7941D !important;
+  }
+  
+  .filter_sec {
+  display: -webkit-box;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-box-align: start;
+  align-items: start;
+  }
+  
+  .table_wrapper {
+  overflow: auto;
+  }
+  
+  thead tr {
+    background: #736f6f;
+    color: white;
+  }
+  tbody:nth-child(even) {
+  background: #ffffff;
+  }
+  tbody{
+    border-bottom: 1px solid black;
+  }
+  table.table {
+    border-collapse: collapse;
+  }
