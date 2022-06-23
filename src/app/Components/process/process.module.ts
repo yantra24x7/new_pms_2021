@@ -4,6 +4,7 @@ import { SharedModule} from '../shared/shared.module';
 import { ProcessService} from  '../../Service/app/process.service';
 import { ProcessRoutingModule } from './process-routing.module';
 import { ProcessComponent,Edit,Add } from './process.component';
+import { ExcelService} from '../../Service/app/excel.service';
 
 
 @NgModule({
@@ -13,6 +14,6 @@ import { ProcessComponent,Edit,Add } from './process.component';
     ProcessRoutingModule
   ],
   entryComponents:[Edit,Add],
-  providers:[ProcessService]
+  providers:[ProcessService,ExcelService]
 })
 export class ProcessModule { }

@@ -33,9 +33,11 @@ export class AlarmHistoryReportComponent implements OnInit {
   alarmreport:any;
   get_report:any;
   export_excel: any[] = [];
+  public today: Date = new Date(new Date().toDateString());
   constructor(private datepipe: DatePipe,private http:HttpClient,private nav:NavbarService,private service:AlarmHistoryService,private fb:FormBuilder,private exportService: ExportService) { 
     this.nav.show()
     this.tenant=localStorage.getItem('tenant_id')
+    
 
   }
   ngOnInit() {
@@ -60,6 +62,7 @@ export class AlarmHistoryReportComponent implements OnInit {
      this.operator_response=res;
     })
   }
+  
 
 
   export(){
@@ -90,6 +93,7 @@ export class AlarmHistoryReportComponent implements OnInit {
        });
      }
        this.exportService.exportAsExcelFile(this.export_excel, 'Alarm History Report Details');
+       
    }
  
  

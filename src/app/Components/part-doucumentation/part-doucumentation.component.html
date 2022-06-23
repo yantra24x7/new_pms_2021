@@ -11,7 +11,7 @@
         </h2>
 
         <div class="forbtn">
-          <button class="export" (click)="exporter.exportTable('xlsx',{fileName:'Part Configuration'})">Export</button>
+          <button class="export" (click)="export('xlsx',{fileName:'Part Configuration'})">Export</button>
         
         <div class="add_new" *ngIf = "Role_NAME == 'Admin' || Role_NAME == 'Manager'">
           <mat-icon class="circle" (click)="user()">add</mat-icon>

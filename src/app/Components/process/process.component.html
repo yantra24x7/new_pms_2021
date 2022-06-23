@@ -11,7 +11,7 @@
         </h2>
 
         <div class="forbtn">
-          <button  class="export" (click)="exporter.exportTable('xlsx',{fileName:'Process Plan Configuration'})">Export</button>
+          <button  class="export" (click)="export('xlsx',{fileName:'Process Plan Configuration'})">Export</button>
        
         <div class="add_new" >
           <mat-icon class="circle" (click)="user()" *ngIf = "Role_NAME == 'Admin' || Role_NAME == 'Manager'">add</mat-icon>

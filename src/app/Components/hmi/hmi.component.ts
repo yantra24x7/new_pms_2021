@@ -27,6 +27,14 @@ export class HmiComponent implements OnInit {
   isShow = true;
   new_date1:any;
   Highcharts: any;
+  sdate: string;
+  selectedMachines: any;
+  selectedShifts: any;
+  edate: string;
+  totl: any;
+  bool: boolean;
+  totals: number;
+  array: any;
   // chart 1
   toggleDisplay() { this.isShow = !this.isShow; }
   no_data:any;
@@ -477,7 +485,52 @@ Highcharts.chart('comparepie2', {
 
     })
   }
-  ngOnDestroy(){
+  
 
+  export(){
+    let register = {
+      "line":this.login.value.line,
+      "machine_name": this.login.value.machine_name,
+      "shift_num": this.login.value.shift_num,
+      // "date": this.new_date + '-' + this.new_date1
+      "date" : this.login.value.date
+    }
+this.service.overall_report(register).subscribe(res => {
+  // this.myLoader = false;
+  this.g_report = res;
+  if(this.g_report.length==0){
+    Swal.fire('Exporting!, No Data Found')
+  }else{
+  for(var i=0;i<this.g_report.length;i++){
+    this.export_excel.push({
+       "S.No": i+1,
+       "Date": this.g_report[i].date || '---',
+       "Shift": this.g_report[i].shift_num || '---',
+       "Machine Name":this.g_report[i].machine_name || '---',
+       "Operator Name":this.g_report[i].operator_name || '---',
+       "Reason":this.g_report[i].reason || '---',
+      //  "Program Number":this.g_report[i].program_number || '---',
+      //  "Result Accumulative": this.g_report[i].productresult_accumulate || '---',
+      //  "Product Name": this.g_report[i].productname || '---',
+      //  "Product Result": this.g_report[i].productresult || '---',
+      //  "Accept Count": this.g_report[i].accept_count || '---',
+      //  "Reject Count": this.g_report[i].reject_count || '---', 
+       "Start Time": this.g_report[i].part_start_time || '---',
+       "End Time": this.g_report[i].part_start_time || '---',
+       "Duration":this.g_report[i].Duration || '---',
+               });
   }
+    this.exportService.exportAsExcelFile(this.export_excel, ' idle reason Details');
 }
+})
+
+}
+ngOnDestroy(){
+
+}
+}
+    
+
+  
+  
+

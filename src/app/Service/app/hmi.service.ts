@@ -34,6 +34,11 @@ export class HmiService {
     return this.http.get('idle_report_pareto?machine='+ register.machine+ '&&date=' + register.date + '&&shift=' + register.shift )
    
   }
+  overall_report(register):Observable<any>{ 
+
+ 
+    return this.http.get('overall_report?machine_name=' + register.machine_name  +'&&module='+ register.module +'&&shift_num=' +register.shift_num +'&&from_date='+ register.date)
+  }
 }
 // return this.http.get('reports?report_type=' + type + '&&from_date=' + from + '&&to_date=' + to +'&&dealer_id=' + dealer 
 //     +'&&customer_id='+customer+'&&city_id='+city + '&&service_type_id='+service+'&&mac_model='+model+'&&si_circle=' + si_circle)

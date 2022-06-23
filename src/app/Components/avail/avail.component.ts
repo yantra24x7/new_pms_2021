@@ -74,19 +74,29 @@ export class AvailComponent implements OnInit {
        this.export_excel.push({
           "S.No": i+1,
           "Date": this.alarmreport[i].date || '---',
-          "Shift": this.alarmreport[i].shift_no || '---',
           "Machine Name":this.alarmreport[i].machine_name || '---',
+          "Shift Number": this.alarmreport[i].shift_no|| '---',
           "Operator Name": this.alarmreport[i].operator_name || '---',
-          "Alarm Type": this.alarmreport[i].alarm_type || '---',
-          "Alarm Number": this.alarmreport[i].alarm_no || '---',
-           "Alarm Message": this.alarmreport[i].message || '---',
-           "Alarm Time": this.alarmreport[i].alarm_time || '---',
+          "Total Hours":this.alarmreport[i].actual_working_hours || '---',
+          "Actual Working  Hours":this.alarmreport[i].total_time || '---',
+          "Operating Hours":this.alarmreport[i].actual_running || '---',
+          "Target":this.alarmreport[i].Target || '---',
+          "Actual":this.alarmreport[i].actual|| '---',
+          "Rejected Qty":this.alarmreport[i].rejecet || '---',
+          "Rework Qty":this.alarmreport[i].rework || '---',
+          "Availabilty(%)":this.alarmreport[i].Availabilty || '---',
+          "Performance(%)":this.alarmreport[i]. performance|| '---',
+          "Qulaity(%)":this.alarmreport[i].Qulaity || '---',
+          "Oee":this.alarmreport[i].oee || '---',
 
- 
+
+
+
+
  
        });
      }
-       this.exportService.exportAsExcelFile(this.export_excel, 'Alarm History Report Details');
+       this.exportService.exportAsExcelFile(this.export_excel, 'Oee Report Details');
    }
  
  

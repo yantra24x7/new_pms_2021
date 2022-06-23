@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 import { ProcessService} from '../../Service/app/process.service';
 import { MatTableDataSource } from '@angular/material';
 import { untilDestroyed } from 'ngx-take-until-destroy';
+import { ExportService } from '../shared/export.service';
+
 @Component({
   selector: 'app-process',
   templateUrl: './process.component.html',
@@ -22,7 +24,8 @@ export class ProcessComponent implements OnInit {
   myLoader= false;
 show_status:any;
 Role_NAME:any;
-  constructor(private nav:NavbarService,private fb:FormBuilder,public dialog: MatDialog,private service:ProcessService,private router:Router)
+  export_excel: any=[];
+  constructor(private nav:NavbarService,private fb:FormBuilder,public dialog: MatDialog,private service:ProcessService,private router:Router,private exportService:ExportService)
   {
   this.nav.show();
   this.tenant=localStorage.getItem('tenant_id');
@@ -59,6 +62,37 @@ Role_NAME:any;
        this.list=res;
        this.dataSource=new MatTableDataSource(this.list)
     })
+  }
+  export(){
+    this.myLoader = true;
+    // this.alarmreport = res;
+    console.log(this.list)
+
+     this.myLoader = false;
+     console.log(this.list);
+     if(this.list.length==0){
+       console.log(this.list)
+       Swal.fire('Exporting!, No Data Found')
+     }else{
+     for(var i=0;i<this.list.length;i++){
+       this.export_excel.push({
+          "#": i+1,
+          "Plan No": this.list[i].plan_number|| '---',
+          "Plan Name": this.list[i].plan_name|| '---',
+          "part No":this.list[i].part_number|| '---',
+          "Created By": this.list[i].created_by || '---',
+          "Status": this.list[i].status || '---',
+          //"": this.list[i].machine_name || '---',
+          
+ 
+ 
+       });
+     }
+       this.exportService.exportAsExcelFile(this.export_excel, 'process plan Report Details');
+   }
+ 
+ 
+
   }
 
 
@@ -121,7 +155,7 @@ export class Edit {
   tenant: any;
   add_val:any;
   list:any;
-  constructor(public dialogRef: MatDialogRef<Edit>,@Inject(MAT_DIALOG_DATA) public data: any,private fb:FormBuilder,public service :ProcessService) {
+  constructor(public dialogRef: MatDialogRef<Edit>,@Inject(MAT_DIALOG_DATA) public data: any,private fb:FormBuilder,public service :ProcessService,private exportService:ExportService) {
     this.tenant=localStorage.getItem('tenant_id');
 
   }
@@ -183,7 +217,7 @@ export class Add {
   tenant:any;
   edit_data:any;
   list:any;
-  constructor(public dialogRef: MatDialogRef<Add>,@Inject(MAT_DIALOG_DATA) public data: any,private fb:FormBuilder,private service:ProcessService) 
+  constructor(public dialogRef: MatDialogRef<Add>,@Inject(MAT_DIALOG_DATA) public data: any,private fb:FormBuilder,private service:ProcessService, private exportService:ExportService) 
   {
     this.tenant=localStorage.getItem('tenant_id');
 

@@ -24,13 +24,13 @@ export class HourComponent implements OnInit {
   endDate:any;
     show: boolean=false;
   login:FormGroup;
-  machine_response: any;
+  machine_response: any=[];
   shift_response: any;
   tenant: any;
   myLoader = false;
   operator_response: any;
   valuesplit:any;
-  alarmreport:any;
+  alarmreport:any=[];
   get_report:any;
   export_excel: any[] = [];
   constructor(private datepipe: DatePipe,private nav:NavbarService,private service:OEEService,private fb:FormBuilder,private exportService: ExportService) { 
@@ -56,9 +56,11 @@ export class HourComponent implements OnInit {
     })
   
   }
-
+  
 
   export(){
+
+
     this.myLoader = true;
     // this.alarmreport = res;
     console.log(this.alarmreport)
@@ -69,23 +71,29 @@ export class HourComponent implements OnInit {
        console.log(this.alarmreport)
        Swal.fire('Exporting!, No Data Found')
      }else{
-     for(var i=0;i<this.alarmreport.length;i++){
+     for(var i=0;i<this.alarmreport;i++){
        this.export_excel.push({
-          "S.No": i+1,
+          "S.no": i+1,
           "Date": this.alarmreport[i].date || '---',
-          "Shift": this.alarmreport[i].shift_no || '---',
+          "Shift Num": this.alarmreport[i].shift_num|| '---',
           "Machine Name":this.alarmreport[i].machine_name || '---',
-          "Operator Name": this.alarmreport[i].operator_name || '---',
-          "Alarm Type": this.alarmreport[i].alarm_type || '---',
-          "Alarm Number": this.alarmreport[i].alarm_no || '---',
-           "Alarm Message": this.alarmreport[i].message || '---',
-           "Alarm Time": this.alarmreport[i].alarm_time || '---',
+          "Part Name": this.alarmreport[i].part_name || '---',
+          "Part No": this.alarmreport[i].part_no || '---',
+          "Opeartor Name": this.alarmreport[i].operator_name|| '---',
+           "Opeartor No": this.alarmreport[i].opeartor_no || '---',
+           "Hourly Target": this.alarmreport[i].Hourly.Target || '---',
+           "Hour1": this.alarmreport[i].Hour1.Target || '---',
+           "Hour2": this.alarmreport[i].Hour2.Target || '---',
+           "Hour3": this.alarmreport[i].Hour3.Target || '---',
+           "Hour4": this.alarmreport[i].Hour4.Target || '---',
+           "Plann.Qty": this.alarmreport[i].Plann.Qty || '---',
+           "Actual Qty": this.alarmreport[i].Actual .Qty || '---',
+           "Utilization": this.alarmreport[i].utilization|| '---',
 
- 
- 
+
        });
      }
-       this.exportService.exportAsExcelFile(this.export_excel, 'Alarm History Report Details');
+       this.exportService.exportAsExcelFile(this.export_excel, 'hourwise Report Details');
    }
  
  

@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { SharedModule} from '../shared/shared.module';
+import { ExcelService} from '../../Service/app/excel.service';
+
 
 import { PartDoucumentationComponent,Edit,Add} from './part-doucumentation.component';
 import { PartService} from  '../../Service/app/part.service';
@@ -16,7 +18,7 @@ const routes: Routes = [{ path: '', component: PartDoucumentationComponent }];
   ],
   entryComponents:[Edit,Add],
 
-  providers:[PartService]
+  providers:[PartService,ExcelService]
 
 })
 export class PartDoucumentationModule { }

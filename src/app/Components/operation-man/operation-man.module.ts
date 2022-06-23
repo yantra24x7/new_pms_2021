@@ -5,6 +5,7 @@ import { OperatorService} from  '../../Service/app/operator.service';
 import { OperationManRoutingModule } from './operation-man-routing.module';
 import { OperationManComponent,Edit,Add} from './operation-man.component';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+import { ExcelService } from 'src/app/Service/app/excel.service';
 
 
 @NgModule({
@@ -14,6 +15,6 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
     OperationManRoutingModule,NgxMaterialTimepickerModule
   ],
   entryComponents:[Edit,Add],
-  providers:[OperatorService]
+  providers:[OperatorService,ExcelService]
 })
 export class OperationManModule { }

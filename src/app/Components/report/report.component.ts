@@ -40,8 +40,8 @@ export class ReportComponent implements OnInit {
   dataSource = new  MatTableDataSource();
   displayedColumns1: string[] = ['position','date', 'machine_name', 'machine_type', 'utilization'];
   dataSource1 = new  MatTableDataSource();
-  list_data:any;
-  listin_data:any;
+  list_data:any=[];
+  listin_data:any=[];
   reports: unknown[];
   drop_value:any;
   SHIFT:any;
@@ -116,11 +116,32 @@ export class ReportComponent implements OnInit {
      }else{
      for(var i=0;i<this.listin_data.length;i++){
        this.export_excel1.push({
-          "S.No": i+1,
+        
+          "#": i+1,
           "Date": this.listin_data[i].date || '---',
-          "Machine Id": this.listin_data[i].machine_name || '---',
+          "Shift":this.listin_data[i].shift || '---',
+          "Time":this.listin_data[i].time || '---',
+ "Operator Name":this.listin_data[i].operator_name|| '---',
+ "Opeartor Id":this.listin_data[i].operator_id || '---',
           "Machine Name": this.listin_data[i].machine_type || '---',
+          "Machine Type":this.listin_data[i].machine_type || '---',
+          "Program Number":this.listin_data[i].program_number || '---',
+          "Job Description":this.listin_data[i].job_description || '---',
+          "Parts Produced":this.listin_data[i].parts_produced|| '---',
+          "Cycle Time":this.listin_data[i].cycle_time || '---',
+          "Cutting Time":this.listin_data[i].cutting_time || '---',
+          "Spindle Speed":this.listin_data[i].spendle_speed|| '---',
+          "Feed":this.listin_data[i].feed_rate || '---',
+          "Run Time":this.listin_data[i].actual_running || '---',
+          "Idle Time":this.listin_data[i].idle_time || '---',
+          "Stop Time":this.listin_data[i].total_downtime|| '---',
+          "Total Run + Idle +Stop":this.listin_data[i].actual_working_hours || '---',
+          "Actual Working Hours":this.listin_data[i].actual_working_hours || '---',
           "Utilization(%.)": this.listin_data[i].utilization || '---',
+          "Spindle Load":this.listin_data[i].spindle_load || '---',
+          "Spindle Motor Temp":this.listin_data[i].spindle_m_temp || '---',
+          "Servo Load":this.listin_data[i].servo_load || '---',
+
       
 
  
@@ -131,6 +152,7 @@ export class ReportComponent implements OnInit {
    }
  
   }
+  
 
   export(){
     this.myLoader = true;

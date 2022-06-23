@@ -8,6 +8,7 @@ import { ActivatedRoute,Router } from '@angular/router';
 import { OperatorService} from '../../Service/app/operator.service';
 import { MatTableDataSource } from '@angular/material';
 import { untilDestroyed } from 'ngx-take-until-destroy';
+import { ExportService } from '../shared/export.service';
 @Component({
   selector: 'app-operation-man',
   templateUrl: './operation-man.component.html',
@@ -18,7 +19,7 @@ export class OperationManComponent implements OnInit {
   displayedColumns: string[] = ['position','operator_name', 'plan_number','operator_spec_id', 'description','setup_time','created_by','part_per_cycle','created','status','action'];
   dataSource = new MatTableDataSource();
   tenant: any;
-  list: any;
+  list: any=[];
   data:any;
   myLoader= false;
 show_status:any;
@@ -26,7 +27,8 @@ Role_NAME:any;
 machine:any;
 getIDIS:any;
 id_pass:any;
-  constructor(private Router :Router,private route:ActivatedRoute,private nav:NavbarService,private fb:FormBuilder,public dialog: MatDialog,private service:OperatorService)
+  export_excel: any=[];
+  constructor(private Router :Router,private route:ActivatedRoute,private nav:NavbarService,private fb:FormBuilder,public dialog: MatDialog,private service:OperatorService,private exportService:ExportService)
   {
 
     console.log(localStorage.getItem('Process_id'))
@@ -90,6 +92,39 @@ id_pass:any;
        this.list=res;
        this.dataSource=new MatTableDataSource(this.list)
     })
+  }
+  export(){
+
+    this.myLoader = true;
+    // this.alarmreport = res;
+    console.log(this.list)
+
+     this.myLoader = false;
+     console.log(this.list);
+     if(this.list.length==0){
+       console.log(this.list)
+       Swal.fire('Exporting!, No Data Found')
+     }else{
+     for(var i=0;i<this.list.length;i++){
+       this.export_excel.push({
+          "S.No": i+1,
+          "Opeartion Name": this.list[i].operation_name || '---',
+          "Operation Id": this.list[i].operation_id|| '---',
+          "Process Plan Number":this.list[i].plan_number|| '---',
+          "Std.Cycle Time": this.list[i].std_cycle_time || '---',
+          "Std Load/Unload Time": this.list[i].load_unload_time || '---',
+          "Std Setup Time": this.list[i].setup_time || '---',
+          "Part Per Cycle": this.list[i].part_per_cycle || '---',
+          "Created By": this.list[i].created_by|| '---',
+          "Status": this.list[i].status || '---',
+
+ 
+ 
+       });
+     }
+       this.exportService.exportAsExcelFile(this.export_excel, 'opeartion management Report Details');
+   }
+
   }
 
 
@@ -159,7 +194,7 @@ export class Edit {
   meridian = true;
   seconds = true;
   listo:any;
-  constructor(private route:ActivatedRoute,public dialogRef: MatDialogRef<Edit>,@Inject(MAT_DIALOG_DATA) public data: any,private fb:FormBuilder,public service :OperatorService) {
+  constructor(private route:ActivatedRoute,public dialogRef: MatDialogRef<Edit>,@Inject(MAT_DIALOG_DATA) public data: any,private fb:FormBuilder,public service :OperatorService,private exportService:ExportService) {
     this.role_name = localStorage.getItem('role_name');
     console.log(this.role_name);
     this.tenant=localStorage.getItem('tenant_id');
@@ -309,7 +344,7 @@ export class Add {
   meridian = true;
   seconds = true;
   machine:any;
-  constructor(private route:ActivatedRoute,public dialogRef: MatDialogRef<Add>,@Inject(MAT_DIALOG_DATA) public data: any,private fb:FormBuilder,private service:OperatorService) 
+  constructor(private route:ActivatedRoute,public dialogRef: MatDialogRef<Add>,@Inject(MAT_DIALOG_DATA) public data: any,private fb:FormBuilder,private service:OperatorService,private exportService:ExportService) 
   {
 
    

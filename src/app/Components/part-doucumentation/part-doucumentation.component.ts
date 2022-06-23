@@ -6,6 +6,7 @@ import Swal from 'sweetalert2'
 import { PartService} from '../../Service/app/part.service';
 import { MatTableDataSource } from '@angular/material';
 import { untilDestroyed } from 'ngx-take-until-destroy';
+import { ExportService } from '../shared/export.service';
 @Component({
   selector: 'app-part-doucumentation',
   templateUrl: './part-doucumentation.component.html',
@@ -20,7 +21,8 @@ export class PartDoucumentationComponent implements OnInit {
   myLoader= false;
 show_status:any;
 Role_NAME:any;
-  constructor(private nav:NavbarService,private fb:FormBuilder,public dialog: MatDialog,private service:PartService)
+  export_excel: any=[];
+  constructor(private nav:NavbarService,private fb:FormBuilder,public dialog: MatDialog,private service:PartService,private exportService:ExportService)
   {
   this.nav.show();
   this.tenant=localStorage.getItem('tenant_id')
@@ -50,7 +52,37 @@ Role_NAME:any;
        this.dataSource=new MatTableDataSource(this.list)
     })
   }
+export(){
+  this.myLoader = true;
+    // this.alarmreport = res;
+    console.log(this.list)
 
+     this.myLoader = false;
+     console.log(this.list);
+     if(this.list.length==0){
+       console.log(this.list)
+       Swal.fire('Exporting!, No Data Found')
+     }else{
+     for(var i=0;i<this.list.length;i++){
+       this.export_excel.push({
+          "S.No": i+1,
+          "Part Number": this.list[i].part_number || '---',
+          "Part Name": this.list[i].part_name|| '---',
+          "Customer Name":this.list[i].customer_name|| '---',
+          "Created By": this.list[i].created_by || '---',
+          "Status": this.list[i].status || '---',
+          //"": this.list[i].machine_name || '---',
+          
+ 
+ 
+       });
+     }
+       this.exportService.exportAsExcelFile(this.export_excel, 'part configuration Report Details');
+   }
+ 
+ 
+
+}
 
   
   operator_delete(id) {
@@ -110,7 +142,7 @@ export class Edit {
   login:FormGroup;
   tenant: any;
   add_val:any;
-  constructor(public dialogRef: MatDialogRef<Edit>,@Inject(MAT_DIALOG_DATA) public data: any,private fb:FormBuilder,public service :PartService) {}
+  constructor(public dialogRef: MatDialogRef<Edit>,@Inject(MAT_DIALOG_DATA) public data: any,private fb:FormBuilder,public service :PartService,private exportService:ExportService) {}
 
   cancel() {
     this.dialogRef.close();
@@ -163,7 +195,7 @@ export class Add {
   tenant:any;
   edit_data:any;
 
-  constructor(public dialogRef: MatDialogRef<Add>,@Inject(MAT_DIALOG_DATA) public data: any,private fb:FormBuilder,private service:PartService) 
+  constructor(public dialogRef: MatDialogRef<Add>,@Inject(MAT_DIALOG_DATA) public data: any,private fb:FormBuilder,private service:PartService,private exportService:ExportService) 
   {
     this.edit_data=data;
     console.log(this.edit_data);
@@ -203,6 +235,7 @@ export class Add {
     this.dialogRef.close();
 })
 }
+
 
 
 

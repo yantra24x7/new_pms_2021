@@ -78,10 +78,22 @@
               <div class="btn_group">
                 <button mat-raised-button class="filter_btn btn_success" (click)="hmiReport()">Report</button>
                 <button mat-raised-button class="filter_btn btn_orange ml-16" (click)="hmiChart()"> Chart</button>
+                <!-- <button class=" export_btn" (click)="export()">Export</button> -->
+                
+
                 <!-- <button type="text" class="view_btn mr-2" mat-button (click) = toggleDisplay()>View Chart</button> -->
               </div>
             </div>
           </form>
+          <div class="table_export">
+            <button class="export_btn" (click)="export('xlsx',{fileName:'hmiReport'})" mat-raised-button> Export</button>
+            <!-- <a href="" class="export_btn">
+                      <i class="material-icons">
+                          file_copy
+                      </i>
+                      Export
+                  </a> -->
+          </div>
         </mat-card-content>
       </mat-card>
       <div *ngIf="reportList" class="section_top_padding">
