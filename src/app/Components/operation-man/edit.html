@@ -22,9 +22,17 @@
                     </mat-error>
                 </mat-form-field>
 
-                <mat-form-field >
+                <!-- <mat-form-field >
                     <mat-select placeholder="Process Plan Number " matNativeControl required formControlName="process_plan_id">
                       <mat-option *ngFor="let file of listo" [value]="file.id">{{file.plan_number}}
+                      </mat-option>
+  
+                    </mat-select>
+
+                  </mat-form-field> -->
+                  <mat-form-field >
+                    <mat-select placeholder="machine name" matNativeControl required formControlName="machine_id">
+                      <mat-option *ngFor="let m of machine_response" [value]="m.id">{{m.machine_name}}
                       </mat-option>
   
                     </mat-select>

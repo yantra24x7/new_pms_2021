@@ -9,14 +9,15 @@ import { OperatorService} from '../../Service/app/operator.service';
 import { MatTableDataSource } from '@angular/material';
 import { untilDestroyed } from 'ngx-take-until-destroy';
 import { ExportService } from '../shared/export.service';
+import { MachineService } from 'src/app/Service/app/machine.service';
 @Component({
   selector: 'app-operation-man',
   templateUrl: './operation-man.component.html',
   styleUrls: ['./operation-man.component.scss']
 })
 export class OperationManComponent implements OnInit {
-
-  displayedColumns: string[] = ['position','operator_name', 'plan_number','operator_spec_id', 'description','setup_time','created_by','part_per_cycle','created','status','action'];
+  // plan_number
+  displayedColumns: string[] = ['position','operator_name','operator_spec_id', 'description','setup_time','created_by','part_per_cycle','created','status','action'];
   dataSource = new MatTableDataSource();
   tenant: any;
   list: any=[];
@@ -194,7 +195,8 @@ export class Edit {
   meridian = true;
   seconds = true;
   listo:any;
-  constructor(private route:ActivatedRoute,public dialogRef: MatDialogRef<Edit>,@Inject(MAT_DIALOG_DATA) public data: any,private fb:FormBuilder,public service :OperatorService,private exportService:ExportService) {
+  machine_response: any;
+  constructor(private mservice:MachineService,private route:ActivatedRoute,public dialogRef: MatDialogRef<Edit>,@Inject(MAT_DIALOG_DATA) public data: any,private fb:FormBuilder,public service :OperatorService,private exportService:ExportService) {
     this.role_name = localStorage.getItem('role_name');
     console.log(this.role_name);
     this.tenant=localStorage.getItem('tenant_id');
@@ -284,13 +286,16 @@ export class Edit {
     })
   
 
-
+    this.mservice.card(this.tenant).pipe(untilDestroyed(this)).subscribe(res => {
+      this.machine_response=res;
+    })
 
 
     this.login=this.fb.group({
       operation_name:["",],
       operation_id:["",],
-      process_plan_id:["",],
+      // process_plan_id:["",],
+      machine_id:[""],
       std_cycle_time:["",],
       load_unload_time:["",],
       part_per_cycle:["",],
@@ -313,7 +318,7 @@ export class Edit {
     datas.setup_time = this.convertTime(this.login.value.setup_time)  
     console.log(datas);
    // console.log(this.add_val)
-    let data = {'operation_name': this.login.value.operation_name, 'operation_id':this.login.value.operation_id,'process_plan_id':this.login.value.process_plan_id,'std_cycle_time': this.login.value.std_cycle_time,'load_unload_time':this.login.value.load_unload_time,'part_per_cycle': this.login.value.part_per_cycle,'setup_time': this.login.value.setup_time,'status': this.login.value.status,'tenant_id':this.tenant}
+    let data = {'operation_name': this.login.value.operation_name, 'operation_id':this.login.value.operation_id,'machine_id':this.login.value.machine_id,'std_cycle_time': this.login.value.std_cycle_time,'load_unload_time':this.login.value.load_unload_time,'part_per_cycle': this.login.value.part_per_cycle,'setup_time': this.login.value.setup_time,'status': this.login.value.status,'tenant_id':this.tenant}
     console.log(data);
 
     this.service.post1(data).pipe(untilDestroyed(this)).subscribe(res => {
@@ -344,7 +349,8 @@ export class Add {
   meridian = true;
   seconds = true;
   machine:any;
-  constructor(private route:ActivatedRoute,public dialogRef: MatDialogRef<Add>,@Inject(MAT_DIALOG_DATA) public data: any,private fb:FormBuilder,private service:OperatorService,private exportService:ExportService) 
+  machine_response: any;
+  constructor(private mservice:MachineService,private route:ActivatedRoute,public dialogRef: MatDialogRef<Add>,@Inject(MAT_DIALOG_DATA) public data: any,private fb:FormBuilder,private service:OperatorService,private exportService:ExportService) 
   {
 
    
@@ -433,6 +439,9 @@ export class Add {
     })
   
     let shift = this.edit_data;
+    this.mservice.card(this.tenant).pipe(untilDestroyed(this)).subscribe(res => {
+      this.machine_response=res;
+    })
 
 
 
@@ -440,7 +449,8 @@ export class Add {
     this.login=this.fb.group({
       operation_name:[this.edit_data.operation_name],
       operation_id:[this.edit_data.operation_id],
-      process_plan_id:[this.edit_data.process_plan_id],
+      // process_plan_id:[this.edit_data.process_plan_id],
+      machine_id:[this.edit_data.machine_id],
       std_cycle_time:[this.TimeAM(shift.std_cycle_time)],
       load_unload_time:[this.TimeAM(shift.load_unload_time)],
       part_per_cycle:[this.edit_data.part_per_cycle],
@@ -459,7 +469,7 @@ export class Add {
     dat.std_cycle_time = this.convertTimeAM(this.login.value.std_cycle_time)
     dat.load_unload_time = this.convertTimeAM(this.login.value.load_unload_time)
     dat.setup_time = this.convertTime(this.login.value.setup_time)  
-    let datak = {'operation_name': this.login.value.operation_name, 'operation_id':this.login.value.operation_id,'process_plan_id':this.login.value.process_plan_id,'std_cycle_time': this.login.value.std_cycle_time,'load_unload_time':this.login.value.load_unload_time,'part_per_cycle': this.login.value.part_per_cycle,'setup_time': this.login.value.setup_time,'status': this.login.value.status,'tenant_id':this.tenant}
+    let datak = {'operation_name': this.login.value.operation_name, 'operation_id':this.login.value.operation_id,'machine_id':this.login.value.machine_id,'std_cycle_time': this.login.value.std_cycle_time,'load_unload_time':this.login.value.load_unload_time,'part_per_cycle': this.login.value.part_per_cycle,'setup_time': this.login.value.setup_time,'status': this.login.value.status,'tenant_id':this.tenant}
     console.log(datak);
    
 
