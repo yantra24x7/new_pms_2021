@@ -13,6 +13,7 @@ export class MachineDetailsComponent implements OnInit {
   GODBless:any;
   tenant: string;
   myLoader = false;
+  timeout1: any;
   constructor(private nav:NavbarService,private service:MachineDetailsService,private route:Router) {
     this.nav.show();
     this.tenant = localStorage.getItem('tenant_id')
@@ -31,6 +32,7 @@ export class MachineDetailsComponent implements OnInit {
      // console.log(this.machine_response.data['Unit - 1'][0]['machine_id'])
      console.log(this.machine_response.data) 
     })
+    this.timeout1=setInterval( ()=> {this.refresh()}, 60000);
   }
   dashboard(name,id){
     console.log(name,id)
@@ -53,5 +55,7 @@ export class MachineDetailsComponent implements OnInit {
      console.log(this.machine_response.data) 
     })
   }
-
+ngOnDestroy(){
+  clearInterval(this.timeout1)
+}
 }
