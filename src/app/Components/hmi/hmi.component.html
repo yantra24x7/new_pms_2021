@@ -11,6 +11,18 @@
           <mat-icon class="v-align-middle display">touch_app</mat-icon>
           <span class="v-align-middle">Idle Reason Report</span>
         </h2>
+
+        <div class="table_export" >
+          <!-- <a class="export_btn"  (click)="export()" mat-raised-button> Export</a> -->
+          <a (click)="export()" class="export_btn">
+                  <i class="material-icons">
+                      file_copy
+                  </i>
+                  Export
+              </a>
+
+
+      </div>
 <!-- 
         <div class="table_export">
           <a (click)="export()" class="export_btn">
@@ -85,15 +97,15 @@
               </div>
             </div>
           </form>
-          <div class="table_export">
-            <button class="export_btn" (click)="export('xlsx',{fileName:'hmiReport'})" mat-raised-button> Export</button>
+          <!-- <div class="table_export"> -->
+            <!-- <button class="export_btn" (click)="export('xlsx',{fileName:'hmiReport'})" mat-raised-button> Export</button> -->
             <!-- <a href="" class="export_btn">
                       <i class="material-icons">
                           file_copy
                       </i>
                       Export
-                  </a> -->
-          </div>
+                  </a>  -->
+          <!-- </div> -->
         </mat-card-content>
       </mat-card>
       <div *ngIf="reportList" class="section_top_padding">

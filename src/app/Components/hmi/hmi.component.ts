@@ -497,27 +497,27 @@ Highcharts.chart('comparepie2', {
     }
 this.service.overall_report(register).subscribe(res => {
   // this.myLoader = false;
-  this.g_report = res;
-  if(this.g_report.length==0){
+  this.get_report = res;
+  if(this.get_report.length==0){
     Swal.fire('Exporting!, No Data Found')
   }else{
-  for(var i=0;i<this.g_report.length;i++){
+  for(var i=0;i<this.get_report.length;i++){
     this.export_excel.push({
        "S.No": i+1,
-       "Date": this.g_report[i].date || '---',
-       "Shift": this.g_report[i].shift_num || '---',
-       "Machine Name":this.g_report[i].machine_name || '---',
-       "Operator Name":this.g_report[i].operator_name || '---',
-       "Reason":this.g_report[i].reason || '---',
+       "Date": this.get_report[i].date || '---',
+       "Shift": this.get_report[i].shift_num || '---',
+       "Machine Name":this.get_report[i].machine_name || '---',
+       "Operator Name":this.get_report[i].operator_name || '---',
+       "Reason":this.get_report[i].reason || '---',
       //  "Program Number":this.g_report[i].program_number || '---',
       //  "Result Accumulative": this.g_report[i].productresult_accumulate || '---',
       //  "Product Name": this.g_report[i].productname || '---',
       //  "Product Result": this.g_report[i].productresult || '---',
       //  "Accept Count": this.g_report[i].accept_count || '---',
       //  "Reject Count": this.g_report[i].reject_count || '---', 
-       "Start Time": this.g_report[i].part_start_time || '---',
-       "End Time": this.g_report[i].part_start_time || '---',
-       "Duration":this.g_report[i].Duration || '---',
+       "Start Time": this.get_report[i].part_start_time || '---',
+       "End Time": this.get_report[i].part_start_time || '---',
+       "Duration":this.get_report[i].Duration || '---',
                });
   }
     this.exportService.exportAsExcelFile(this.export_excel, ' idle reason Details');
