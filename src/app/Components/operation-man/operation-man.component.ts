@@ -111,7 +111,7 @@ id_pass:any;
           "S.No": i+1,
           "Opeartion Name": this.list[i].operation_name || '---',
           "Operation Id": this.list[i].operation_id|| '---',
-          "Process Plan Number":this.list[i].plan_number|| '---',
+          // "Process Plan Number":this.list[i].plan_number|| '---',
           "Std.Cycle Time": this.list[i].std_cycle_time || '---',
           "Std Load/Unload Time": this.list[i].load_unload_time || '---',
           "Std Setup Time": this.list[i].setup_time || '---',
