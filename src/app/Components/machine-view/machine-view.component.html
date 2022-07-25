@@ -73,7 +73,21 @@
                             <p> <b>Operator Name : </b>
                                 <span>
                                     {{machie_status?.operator_allocation}}
-                                </span></p>
+                                </span>
+                            <br>
+                            <!-- <b>Target : </b>
+                                <span>
+                                    {{machie_status?.operator_allocation}}
+                                </span> -->
+                            </p>
+                                <!-- <p><b>Component ID : </b>
+                                    <span>{{machie_status?.last_update}} </span>
+                                    <br>
+                                    <b>Actual : </b>
+                                <span>
+                                    {{machie_status?.operator_allocation}}
+                                </span>
+                                </p> -->
                             <p><b>Last Updated Time : </b>
                                 <span>{{machie_status?.last_update}} </span>
                             </p>
@@ -292,8 +306,11 @@
                                                 <div class="gradient-wrapper servo_motor_chart">
                                                     <circle-progress  [percent]=pu.value [radius]="50" units="°C" [showSubtitle]="false"
                                                         [outerStrokeWidth]="12" [innerStrokeWidth]="12" [titleFontSize]="12" [unitsFontSize]="12"
-                                                        [outerStrokeColor]="'#48ba46'" [innerStrokeColor]="'#27272e'"
+                                                        [outerStrokeColor]="colorcode(pu.value)" [innerStrokeColor]="'#27272e'"
                                                         [animation]="true" [animationDuration]="300"></circle-progress>
+                                                        <!-- #DBCF19  yellow -->
+                                                        <!-- #48ba46  green -->
+                                                        <!-- #ed4747  red -->
                                                 </div>
                                                 <p>{{pu.key}}</p>
                                             </div>
@@ -309,7 +326,7 @@
                                             <div class="gradient-wrapper servo_motor_chart">
                                                 <circle-progress [percent]=te.value [radius]="50" units="°C" [showSubtitle]="false"
                                                     [outerStrokeWidth]="12" [innerStrokeWidth]="12"
-                                                    [outerStrokeColor]="'#48ba46'" [innerStrokeColor]="'#27272e'"
+                                                    [outerStrokeColor]="colorcode(te.value)" [innerStrokeColor]="'#27272e'"
                                                     [animation]="true" [animationDuration]="300"></circle-progress>
                                             </div>
                                             <p>{{te.key}}</p>
@@ -326,7 +343,7 @@
                                             <div class="gradient-wrapper servo_motor_chart seperate">
                                                 <circle-progress [percent]=machie_status?.spindle_load [radius]="100" [showSubtitle]="false"
                                                     [outerStrokeWidth]="16" [innerStrokeWidth]="16"
-                                                    [outerStrokeColor]="'#48ba46'" [innerStrokeColor]="'#27272e'"
+                                                    [outerStrokeColor]="colorcode(machie_status?.spindle_load)" [innerStrokeColor]="'#27272e'"
                                                     [animation]="true" [animationDuration]="300"></circle-progress>
                                             </div>
                                             <p style="font-size: 14px;">Load</p>
@@ -335,7 +352,7 @@
                                             <div class="gradient-wrapper servo_motor_chart seperate">
                                                 <circle-progress [percent]=machie_status?.sp_temp [radius]="100" units="°C"  [showSubtitle]="false"
                                                     [outerStrokeWidth]="16" [innerStrokeWidth]="16"
-                                                    [outerStrokeColor]="'#48ba46'" [innerStrokeColor]="'#27272e'"
+                                                    [outerStrokeColor]="colorcode(machie_status?.sp_temp)" [innerStrokeColor]="'#27272e'"
                                                     [animation]="true" [animationDuration]="300"></circle-progress>
                                             </div>
                                             <p style="font-size: 14px;">Motor Temperature</p>

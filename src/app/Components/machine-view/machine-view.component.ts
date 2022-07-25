@@ -106,7 +106,21 @@ export class MachineViewComponent implements OnInit {
     
   }
 
+  colorcode(value1){
 
+    if(50>=value1){
+
+     return '#48ba46'
+
+    }else if(50<value1 && 75>=value1){
+
+      return '#DBCF19'
+
+    }else{
+      return '#ed4747'
+    }
+   
+  }
   spindle(){
     var containergokul = Highcharts.chart('containergokul',{
       chart: {
